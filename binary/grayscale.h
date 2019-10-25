@@ -17,5 +17,5 @@ void Append( GRAY_IMAGE *, GRAY_PIXEL pix);
 void AccessPixel(GRAY_IMAGE *, int pix_h, int pix_w);
 GRAY_IMAGE * LoadFromFile(char *);
 void saveOnFile(GRAY_IMAGE *, char *nome );
-GRAY_IMAGE * change_intensity(GRAY_IMAGE *, int intensity);
+
 #endif //INC_00_GRAYSCALE_H

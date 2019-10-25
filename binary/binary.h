@@ -2,7 +2,7 @@
 #define INC_00_BINARY_H
 
 typedef struct {
-  unsigned char bit:1;
+  unsigned char bit;
 
 }BIN_PIXEL;
 
@@ -15,7 +15,8 @@ typedef struct {
 BIN_IMAGE * CreateImage(int height, int width);
 void Append( BIN_IMAGE *, BIN_PIXEL pix);
 void AccessPixel(BIN_IMAGE *, int pix_h, int pix_w);
-BIN_IMAGE * LoadFromFile(char *);
+BIN_IMAGE * LoadFromGrayFile(char *);
+BIN_IMAGE * LoadFromBinFile(char *);
 void saveOnFile(BIN_IMAGE *, char *nome );
 
 #endif //INC_00_BINARY_H

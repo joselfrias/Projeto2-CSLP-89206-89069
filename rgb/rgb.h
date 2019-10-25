@@ -18,5 +18,6 @@ void AccessPixel(RGB_IMAGE *, int pix_h, int pix_w);
 RGB_IMAGE * access_region(RGB_IMAGE *, int pix_h_start, int pix_h_end, int pix_w_start, int pix_w_end);
 RGB_IMAGE * LoadFromFile(char *);
 void saveOnFile(RGB_IMAGE *, char *nome );
-
+RGB_IMAGE * change_intensity(RGB_IMAGE *, int intensity);
+RGB_IMAGE * applyWatermark(RGB_IMAGE *, RGB_IMAGE *);
 #endif //INC_00_RGB_H

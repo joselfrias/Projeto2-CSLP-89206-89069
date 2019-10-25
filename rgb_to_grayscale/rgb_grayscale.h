@@ -29,7 +29,7 @@ RGB_IMAGE * LoadFromFileRGB(char *);
 void saveOnFileRGB(RGB_IMAGE *, char *nome );
 
 GRAY_IMAGE * convertToGray(RGB_IMAGE *);
-
+GRAY_IMAGE * convertToChannel(RGB_IMAGE *, char *);
 GRAY_IMAGE * CreateGRAYImage(int height, int width);
 void AppendGRAY( GRAY_IMAGE *, GRAY_PIXEL pix);
 GRAY_IMAGE * LoadFromFileGRAY(char *);

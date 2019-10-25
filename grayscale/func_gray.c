@@ -43,7 +43,7 @@ void saveOnFile(GRAY_IMAGE *img, char *nome){
   fp=fopen(nome ,"wb");
   fprintf(fp, "P5\n");
   fprintf(fp, "%d %d\n", img->h, img->w);
-  fprintf(fp, "%d",255);
+  fprintf(fp, "%d\n",255);
   fwrite(img->data, img->h, img->w,fp);
 }
 
@@ -51,6 +51,24 @@ void saveOnFile(GRAY_IMAGE *img, char *nome){
 void AccessPixel(GRAY_IMAGE *img, int pix_h, int pix_w){
   int pos_pix=pix_h*(img->h)+ pix_w*(img->w);
   printf ("%d ", img->data[pos_pix].gray);
+
+}
+
+GRAY_IMAGE * change_intensity(GRAY_IMAGE *img, int intensity){
+  GRAY_IMAGE *tmp = CreateImage(img->h, img->w);
+  for (int i=0; i<img->size;i++){
+    if (img->data[i].gray+intensity<256){
+      tmp->data[i].gray=img->data[i].gray+intensity;
+    }
+    else if (img->data[i].gray+intensity>=256){
+      tmp->data[i].gray=255;
+    }
+    else if (img->data[i].gray+intensity<0){
+      tmp->data[i].gray=0;
+    }
+
+  }
+  return tmp;
 
 
 }

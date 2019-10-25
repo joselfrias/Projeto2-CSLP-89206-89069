@@ -3,8 +3,12 @@
 
 int main(){
   BIN_IMAGE *imagem;
-  imagem=LoadFromFile("bin_lena.pbm");
+  imagem=LoadFromGrayFile("gray_lena.pgm");
+  BIN_IMAGE *newBinImage;
+  saveOnFile(imagem, "file_gray.pgm");
+  newBinImage=LoadFromBinFile("file_gray.pgm");
+  saveOnFile(newBinImage,"file_grayV2.pgm");
 
-  saveOnFile(imagem, "file_gray.pbm");
+  //TODO define treshold
   return 0;
 }

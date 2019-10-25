@@ -4,8 +4,9 @@
 int main(){
   GRAY_IMAGE *imagem;
   imagem=LoadFromFile("gray_lena.pgm");
-
+  GRAY_IMAGE *newImage;
   saveOnFile(imagem, "file_gray.pgm");
-  AccessPixel(imagem, 1,0);
+  newImage=change_intensity(imagem, 200);
+  saveOnFile(newImage,"intens_gray.pgm");
   return 0;
 }

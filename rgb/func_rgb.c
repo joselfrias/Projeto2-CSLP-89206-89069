@@ -30,7 +30,7 @@ RGB_IMAGE * LoadFromFile(char *nome){
 
   fscanf(fp, "%d %d", &h, &w);
 
-  fscanf(fp, "%d", &nobits);
+  fscanf(fp, "%d\n", &nobits);
   RGB_IMAGE *img=CreateImage(h,w);
 
   fread(img->data, img->h * 3, img->w, fp);
@@ -43,7 +43,7 @@ void saveOnFile(RGB_IMAGE *img, char *nome){
   fp=fopen(nome ,"wb");
   fprintf(fp, "P6\n");
   fprintf(fp, "%d %d\n", img->h, img->w);
-  fprintf(fp, "%d",255);
+  fprintf(fp, "%d\n",255);
   fwrite(img->data, img->h * 3, img->w,fp);
 }
 
@@ -53,17 +53,78 @@ void AccessPixel(RGB_IMAGE *img, int pix_h, int pix_w){
 
 }
 
+
+RGB_IMAGE * change_intensity(RGB_IMAGE *img, int intensity){
+  RGB_IMAGE *tmp=CreateImage(img->h, img->w);
+    for(int i=0; i<img->size;i++){
+      if (img->data[i].r+intensity < 255){
+          tmp->data[i].r=img->data[i].r+intensity;
+    }
+      else if (img->data[i].r+intensity > 255){
+        tmp->data[i].r=255;
+      }
+      else if (img->data[i].r+intensity<0){
+        tmp->data[i].r=0;
+      }
+      if (img->data[i].g+intensity < 255){
+          tmp->data[i].g=img->data[i].g+intensity;
+    }
+      else if (img->data[i].g+intensity > 255){
+        tmp->data[i].g=255;
+      }
+      else if (img->data[i].g+intensity<0){
+        tmp->data[i].g=0;
+      }
+      if (img->data[i].b+intensity < 255){
+          tmp->data[i].b=img->data[i].b+intensity;
+    }
+      else if (img->data[i].b+intensity > 255){
+        tmp->data[i].b=255;
+      }
+      else if (img->data[i].b+intensity<0){
+        tmp->data[i].b=0;
+      }
+    }
+
+
+    return tmp;
+
+}
+
+
+
 RGB_IMAGE * access_region(RGB_IMAGE *img, int pix_h_start, int pix_h_end, int pix_w_start, int pix_w_end){
-  int initial_pos=(pix_h_start * (img->w))+pix_w_start;
-  int final_pos=(pix_h_end * (img->w))+pix_w_end;
+  int initial_pos=(pix_w_start * (img->w))+pix_h_start;
+  int final_pos=(pix_w_end * (img->w))+pix_h_end;
   printf ("%d\n",initial_pos);
   printf ("%d\n",final_pos);
-  RGB_IMAGE *image=CreateImage(512,512);
-  for (int i=initial_pos; i<=final_pos;i++){
-    image->data[i]=img->data[i];
-    printf("%d %d %d\n", image->data[i].r,image->data[i].g, image->data[i].b);
+  int nlines=0;
+  int j=0;
+  RGB_IMAGE *image=CreateImage(pix_h_end-pix_h_start,pix_w_end-pix_w_start);
+  /*for (int i=initial_pos; i<=final_pos;i++){
+    if ((i<=pix_w_end * image->w+nlines-1) && (i>=pix_w_start*image->w+nlines-1)){
+      image->data[j]=img->data[i];
+      j++;
+
+    }
+    else{
+      nlines++;
+      img->data+=img->w-image->w;
+
+    }
 
   }
+  */
+  
 
+  printf ("%d ", nlines);
+  printf("%d ",j);
   return image;
+}
+
+
+RGB_IMAGE * applyWatermark(RGB_IMAGE *big_img, RGB_IMAGE * other_img){
+
+
+
 }

@@ -1,5 +1,6 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include "grayscale.h"
 
 GRAY_IMAGE * CreateImage(int height, int width){
   GRAY_IMAGE *tmp;
@@ -12,7 +13,6 @@ GRAY_IMAGE * CreateImage(int height, int width){
 
   return tmp;
 }
-
 GRAY_IMAGE * LoadFromFile(char *nome){
   char buff[32];
   FILE *fp;
@@ -38,26 +38,19 @@ GRAY_IMAGE * LoadFromFile(char *nome){
 
 }
 
-void convertToBinary(GRAY_IMAGE * img){
-  int ncols=img->w;
-  int nlines=img->h;
+void saveOnFile(GRAY_IMAGE *img, char *nome){
+  FILE *fp;
+  fp=fopen(nome ,"wb");
+  fprintf(fp, "P5\n");
+  fprintf(fp, "%d %d\n", img->h, img->w);
+  fprintf(fp, "%d",255);
+  fwrite(img->data, img->h, img->w,fp);
+}
 
-  unsigned int b=1;
-  unsigned int ret=0;
-  treshold=128;
-  for (int i=0; i<img->size;i++){
-    if (img->data[i]>treshold){
-      b=1;
-    }
-    else{
-      b=0;
-      b=b<<i;
-    }
 
-    ret=ret ^ b;
-  //  return ret;
-
-  }
+void AccessPixel(GRAY_IMAGE *img, int pix_h, int pix_w){
+  int pos_pix=pix_h*(img->h)+ pix_w*(img->w);
+  printf ("%d ", img->data[pos_pix].gray);
 
 
 }

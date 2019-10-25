@@ -64,6 +64,30 @@ GRAY_IMAGE * convertToGray(RGB_IMAGE * img){
 
 
 }
+
+GRAY_IMAGE * convertToChannel(RGB_IMAGE * img, char * channel){
+  GRAY_IMAGE *tmp=CreateImageGRAY(img->h,img->w);
+  printf("%s\n", channel);
+  if (strcmp(channel, "Red")){
+    for (int i=0; i<img->h * img->w;i++){
+      tmp->data[i].gray=img->data[i].r;
+  }
+}
+  else if (strcmp(channel,"Green")){
+    for (int i=0; i<img->h * img->w;i++){
+      tmp->data[i].gray=img->data[i].g;
+  }
+  }
+  else if (strcmp(channel, "Blue")){
+    for (int i=0; i<img->h * img->w;i++){
+      tmp->data[i].gray=img->data[i].b;
+  }
+  }
+
+  return tmp;
+
+
+}
 void saveOnFileGRAY(GRAY_IMAGE *img, char *nome){
   FILE *fp;
   fp=fopen(nome ,"wb");
