@@ -1,3 +1,8 @@
+/** @file functions.c
+ *  @brief Implementação das funções definidas nos header files.
+ *
+ *
+ */
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -6,7 +11,8 @@
 #include "formats_rgb.h"
 
 /*
-* Função que cria uma imagem em RGB
+* @brief Função que cria uma imagem em RGB.
+*
 * @param height Numero de linhas da imagem.
 * @param width Numero de colunas da imagem.
 * @return tmp Retorna uma estrutura RGB_IMAGE.
@@ -108,6 +114,7 @@ RGB_IMAGE * change_intensityRGB(RGB_IMAGE *img, int intensity){
 * @return image Retorna uma nova RGB_IMAGE que é a região de interesse pretendida.
 */
 RGB_IMAGE * access_regionRGB(RGB_IMAGE *img, int pix_h_start, int pix_h_end, int pix_w_start, int pix_w_end){
+
   int initial_pos=(pix_w_start * (img->w))+pix_h_start;
   int final_pos=(pix_w_end * (img->w))+pix_h_end;
   printf ("%d\n",initial_pos);
@@ -116,20 +123,21 @@ RGB_IMAGE * access_regionRGB(RGB_IMAGE *img, int pix_h_start, int pix_h_end, int
   int j=0;
   RGB_IMAGE *image=CreateImageRGB(pix_h_end-pix_h_start,pix_w_end-pix_w_start);
   for (int i=initial_pos; i<=final_pos;i++){
-    if ((i<=pix_w_end * image->w+nlines-1) && (i>=pix_w_start*image->w+nlines-1)){
-      image->data[j]=img->data[i];
+
+    if ((i<=(nlines * image->w)+pix_w_end) && (i>=(nlines*image->w)+pix_w_start)){
+      image->data[j].r=img->data[i].r;
+      image->data[j].g=img->data[i].g;
+      image->data[j].b=img->data[i].b;
       j++;
 
     }
-    else{
-      nlines++;
-      img->data+=img->w-image->w;
+  else{
+    nlines++;
+}
 
-    }
 
   }
-
-  return image;
+    return image;
 }
 
 /*
@@ -167,7 +175,7 @@ void saveOnFileRGB(RGB_IMAGE *img, char *nome){
 * @return Nothing
 */
 
-void AccessPixel(RGB_IMAGE *img, int pix_h, int pix_w){
+void AccessPixelRGB(RGB_IMAGE *img, int pix_h, int pix_w){
   int pos_pix=pix_h*(img->w)+ pix_w;
   printf ("%d %d %d", img->data[pos_pix].r,img->data[pos_pix].g, img->data[pos_pix].b);
 
@@ -180,7 +188,7 @@ void AccessPixel(RGB_IMAGE *img, int pix_h, int pix_w){
   * Função que cria uma imagem em GRAYSCALE
   * @param height Numero de linhas da imagem.
   * @param width Numero de colunas da imagem.
-  * @return tmp Retorna uma estrutura RGB_IMAGE.
+  * @return tmp Retorna uma estrutura GRAY_IMAGE.
   */
 GRAY_IMAGE * CreateImageGRAY(int height, int width){
   GRAY_IMAGE *tmp;

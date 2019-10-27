@@ -4,19 +4,18 @@
 #include "formats_rgb.h"
 int main(){
   //Testing RGB FUNCTIONS
-  /*RGB_IMAGE *imagem;
+  RGB_IMAGE *imagem;
   RGB_IMAGE *newImage;
   imagem=LoadFromFileRGB("lena.ppm");
   saveOnFileRGB(imagem, "file.ppm");
-  AccessPixel(imagem, 501,499);
-  newImage=access_regionRGB(imagem,0,255,0,255);
-  printf("%d\n",newImage->size);
+//  AccessPixelRGB(imagem, 501,499);
+  newImage=access_regionRGB(imagem,0,500,0,500);
   saveOnFileRGB(newImage,"newfile.ppm");
-
+/*
   newImage=change_intensityRGB(imagem, -100);
-  saveOnFileRGB(newImage,"intensity.ppm");*/
+  saveOnFileRGB(newImage,"intensity.ppm");
 
-
+*/
   //Testing Binary Images
 /*
   BIN_IMAGE *imagem;
@@ -25,10 +24,10 @@ int main(){
   saveOnFileBIN(imagem, "file_gray.pgm");
   newBinImage=LoadFromBinFile("file_gray.pgm");
   saveOnFileBIN(newBinImage,"file_grayV2.pgm");
-  */
+
   //TODO define threshold
   //Testing Gray Image functions
-/*
+
   GRAY_IMAGE *imagem;
   imagem=LoadFromFileGRAY("gray_lena.pgm");
   GRAY_IMAGE *newImage;
@@ -38,7 +37,7 @@ int main(){
   */
 
 
-
+/*
   RGB_IMAGE *img_rgb;
   GRAY_IMAGE *img_gray;
   GRAY_IMAGE *img_grayv1;
@@ -53,7 +52,7 @@ int main(){
   img_grayv2=convertToChannel(img_rgb,"Blue");
   saveOnFileGRAY(img_grayv2,"blue_lena.pgm");
 
-
+*/
   return 0;
 
 

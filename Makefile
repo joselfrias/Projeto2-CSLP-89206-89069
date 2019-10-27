@@ -1,6 +1,6 @@
 all: main
 
-main: main.o functions.o
+main:main.o functions.o  
 
 main.o:main.c
 				gcc -o main.o -c main.c -W -Wall
