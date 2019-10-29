@@ -2,5 +2,5 @@ José Frias nºMec:89206
 Pedro Marques nºMec:89069
 
 Comandos para executar:<br>
--make
--./main
+make<br>
+./main
