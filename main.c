@@ -11,6 +11,7 @@ int main(){
   /**De salientar que a função de watermark não permite obter um resultado
   * correto quando a watermark é retangular. Além disso, a posição final da colocação
   * do watermark terá de ser altura da watermark +1 e largura +1.
+  * O filtro não pode ser configurável, é já aplicado a uma imagem um filtro predefinido.
   */
 
   RGB_IMAGE *imagem;
@@ -44,9 +45,9 @@ int main(){
 
 
   //Testing Binary Images
-
+  int t=128;
   BIN_IMAGE *imagemBIN;
-  imagemBIN=LoadFromGrayFile("gray_lena.pgm",128);
+  imagemBIN=LoadFromGrayFile("gray_lena.pgm",t);
   BIN_IMAGE *newBinImage;
   saveOnFileBIN(imagemBIN, "file_gray.pgm");
   newBinImage=LoadFromBinFile("file_gray.pgm");
