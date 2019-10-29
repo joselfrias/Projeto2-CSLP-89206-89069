@@ -8,13 +8,13 @@ int main(){
   RGB_IMAGE *newImage;
   //GRAY_IMAGE *imagem;
  // GRAY_IMAGE *newImage;
-  //imagem = LoadFromFileGRAY("gray_lena.pgm");
+  imagem = LoadFromFileGRAY("gray_lena.pgm");
   //newImage= access_regionGRAY(imagem, 0, 0, 512, 255);
   //imagem = LoadFromFileGRAY("cutOut.pgm");
-  //newImage = filterImageGRAY(imagem);
+  newImage = filterImageGRAY(imagem);
   //saveOnFileGRAY(newImage, "selectExample");
-  imagem=LoadFromFileRGB("lena.ppm");
-  newImage = access_regionRGB(imagem, 0, 0 , 512, 255);
+  //imagem=LoadFromFileRGB("lena.ppm");
+  //newImage = access_regionRGB(imagem, 0, 0 , 512, 255);
   //saveOnFileRGB(imagem, "file.ppm");
 //  AccessPixelRGB(imagem, 501,499);
   //newImage=access_regionRGB(imagem,0,512,0,512);
@@ -61,7 +61,7 @@ int main(){
   saveOnFileGRAY(img_grayv2,"blue_lena.pgm");
 */
   printf("Done\n");
-  saveOnFileRGB(imagem, "file.ppm");
+  saveOnFileGRAY(newImage, "newImage.pgm");
   return 0;
 
 

@@ -54,11 +54,7 @@ RGB_IMAGE * LoadFromFileRGB(char *nome){
   fscanf(fp, "%d", &nobits);
   printf("%d ", nobits);
   RGB_IMAGE *img=CreateImageRGB(h,w);
-  /*for(int i = 0; i < w*h; i++){
-    fread(&img->data[i].r, sizeof(char), 1, fp);
-    fread(&img->data[i].g, sizeof(char), 1, fp);
-    fread(&img->data[i].b, sizeof(char), 1, fp);
-  }*/
+  fread(img->data, img->h*3, img->w, fp);
 
   return img;
 }
@@ -130,7 +126,7 @@ RGB_IMAGE * access_regionRGB(RGB_IMAGE *img, int x, int y, int w, int h){
       tmp->data[i].r = img->data[i].r;
       tmp->data[i].g = img->data[i].g;
       tmp->data[i].b = img->data[i].b;
-      printf("%d %d %d\n", img->data[i].r, img->data[i].g, img->data[i].b);
+      //printf("%d %d %d\n", img->data[i].r, img->data[i].g, img->data[i].b);
       counter++;
     }
     if(i == upperBound ){
@@ -198,7 +194,7 @@ void saveOnFileRGB(RGB_IMAGE *img, char *nome){
     fwrite(&img->data[i].g, sizeof(char), 1, fp);
     fwrite(&img->data[i].b, sizeof(char), 1, fp);
   }*/
-  fwrite(img->data, img->h, img->w, fp);
+  fwrite(img->data, img->h*3, img->w, fp);
 }
 
 
@@ -400,9 +396,9 @@ GRAY_IMAGE * filterImageGRAY(GRAY_IMAGE *img){
   GRAY_IMAGE *tmp = CreateImageGRAY(img->h, img->w);
   printf("\n");
   int counter = 0;
-  int kernel[9] ={-1,0,1,   
-          0,0,0,
-          1,0,-1};
+  int kernel[9] ={1,2,1,   
+          2,4,2,
+          1,2,1};
   for(int i = 0; i < img->size; i++){
     if(i < img->w || i%img->w == 0 || (i+1)%img->w == 0 || i > (img->w)*(img->w-1)){
       tmp->data[i].gray = 0;
@@ -414,17 +410,18 @@ GRAY_IMAGE * filterImageGRAY(GRAY_IMAGE *img){
       int kernelValue = 0;
       int t;
       for(int a = 0; a < 3; a++){
-        //printf("%d\n", i);
-        if(a == 0){
-          t = -512;
+        for(int b = 0; b < 3; b++){
+          if(a+b < 3){
+            t = -512;
+          }
+          else if(a+b < 6){
+            t = 0;
+          }
+          else{
+            t = 512;
+          }
+          newPixel += img->data[i+t+b].gray*kernel[kernelValue];
         }
-        else if(a == 1){
-          t = 0;
-        }
-        else{
-          t = 512;
-        }
-        newPixel += img->data[i+t+a].gray*kernel[kernelValue];
         kernelValue++;
         //printf("%d %d %d\n", i, t, a);
       }
