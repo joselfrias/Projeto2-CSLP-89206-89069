@@ -94,7 +94,36 @@ void AccessPixelGRAY(GRAY_IMAGE *, int pix_h, int pix_w);
 */
 GRAY_IMAGE * change_intensityGRAY(GRAY_IMAGE *, int intensity);
 
-GRAY_IMAGE * access_regionGRAY(GRAY_IMAGE *, int x1, int y1, int x2, int y2);
+/*
+ * Função que recorta uma imagem em Grayscale
+ * e retorna esse mesmo recorte, que é também uma GRAY_IMAGE.
 
-GRAY_IMAGE * filterImageGRAY(GRAY_IMAGE *);
+ *@param x largura inicial do recorte.
+ *@param y y altura inicial do recorte.
+ *@param w largura final do recorte.
+ *@param h altura final do recorte.
+ *@return tmp GRAY_IMAGE obtida através do recorte da imagem original.
+ */
+GRAY_IMAGE * access_regionGRAY(GRAY_IMAGE *img, int x, int y, int w, int h);
+
+/*
+ * Função que aplica um watermark, que é uma GRAY_IMAGE, a uma imagem de maiores dimensões,
+ * também ela em Grayscale.
+ *
+ * @param original GRAY_IMAGE onde irá ser aplicada a watermark.
+ * @param watermark Watermark que irá ser aplicado.
+ * @param pix_h_start x onde irá ser iniciado o watermark na imagem original.
+ * @param pix_w_start y onde irá ser iniciado o watermark na imagem original.
+ * @param pix_h_end x onde irá terminar o watermark na imagem original.
+ * @param pix_w_end y onde irá terminar o watermark na imagem original.
+ */
+GRAY_IMAGE * applyWatermarkGRAY(GRAY_IMAGE *, GRAY_IMAGE *,int pix_h_start, int pix_w_start,int  pix_h_end, int pix_w_end);
+
+/*
+ * Função que aplica um filter a uma imagem em Grayscale.
+
+ *@param img GRAY_IMAGE que irá receber o filtro.
+ *@return tmp GRAY_IMAGE com o filtro aplicado.
+ */
+GRAY_IMAGE *filterImageGRAY(GRAY_IMAGE *img);
 #endif //_FORMATS_GRAY_H

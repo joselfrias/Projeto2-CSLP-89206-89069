@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['main_32',['main',['../kernelTeste_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;kernelTeste.c'],['../main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;main.c']]],
-  ['main_2ec_33',['main.c',['../main_8c.html',1,'']]]
+  ['n_37',['n',['../structBIN__IMAGE.html#a59a36b4f3184c401aa00232a4709c999',1,'BIN_IMAGE::n()'],['../structGRAY__IMAGE.html#ad7c0296470c4db5343d7c4ca0c3e1e35',1,'GRAY_IMAGE::n()'],['../structRGB__IMAGE.html#ad6db5c336aed807149360a13651ac8ee',1,'RGB_IMAGE::n()']]]
 ];

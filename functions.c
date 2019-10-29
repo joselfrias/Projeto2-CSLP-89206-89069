@@ -1,4 +1,4 @@
-/** @file functions.c
+/** \file functions.c
  *  @brief Implementação das funções definidas nos header files.
  *
  *
@@ -11,11 +11,11 @@
 #include "formats_rgb.h"
 
 /*
-* @brief Função que cria uma imagem em RGB.
+*  Função que cria uma imagem em RGB.
 *
-* @param height Numero de linhas da imagem.
-* @param width Numero de colunas da imagem.
-* @return tmp Retorna uma estrutura RGB_IMAGE.
+*  height Numero de linhas da imagem.
+*  width Numero de colunas da imagem.
+*  tmp Retorna uma estrutura RGB_IMAGE.
 */
 RGB_IMAGE * CreateImageRGB(int height, int width){
   RGB_IMAGE *tmp;
@@ -49,13 +49,13 @@ RGB_IMAGE * LoadFromFileRGB(char *nome){
   }
 
   fscanf(fp, "%d %d", &h, &w);
-  printf("%d %d ", h,w);
 
-  fscanf(fp, "%d", &nobits);
-  printf("%d ", nobits);
+
+  fscanf(fp, "%d \n", &nobits);
+
   RGB_IMAGE *img=CreateImageRGB(h,w);
-  fread(img->data, img->h*3, img->w, fp);
 
+  fread(img->data, img->h * 3, img->w, fp);
   return img;
 }
 
@@ -113,57 +113,28 @@ RGB_IMAGE * change_intensityRGB(RGB_IMAGE *img, int intensity){
 * @param pix_w_end coluna onde se pretende acabar a região de interesse.
 * @return image Retorna uma nova RGB_IMAGE que é a região de interesse pretendida.
 */
-
 RGB_IMAGE * access_regionRGB(RGB_IMAGE *img, int x, int y, int w, int h){
-  RGB_IMAGE *tmp = CreateImageRGB(h-y,w-x);
+  RGB_IMAGE * tmp=CreateImageRGB(w-x,h-y);
   int lowerBound = (x + y)*img->w;
   int upperBound = lowerBound + tmp->h;
   int imgSize = img->size;
   int counter = 0;
   for(int i = 0; i < imgSize; i++){
+
     if( i < upperBound && i >= lowerBound){
-      if(counter != i)
-      tmp->data[i].r = img->data[i].r;
-      tmp->data[i].g = img->data[i].g;
-      tmp->data[i].b = img->data[i].b;
-      //printf("%d %d %d\n", img->data[i].r, img->data[i].g, img->data[i].b);
+      tmp->data[counter] = img->data[i];
       counter++;
     }
+
     if(i == upperBound ){
       i--;
       lowerBound += img->w;
       upperBound += img->w;
     }
   }
-  //printf("%d\n", counter);
-  return img;
-}
-/*RGB_IMAGE * access_regionRGB(RGB_IMAGE *img, int pix_h_start, int pix_h_end, int pix_w_start, int pix_w_end){
-
-  int initial_pos=(pix_w_start * (img->w))+pix_h_start;
-  int final_pos=(pix_w_end * (img->w))+pix_h_end;
-  printf ("%d\n",initial_pos);
-  printf ("%d\n",final_pos);
-  int nlines=0;
-  int j=0;
-  RGB_IMAGE *image=CreateImageRGB(pix_h_end-pix_h_start,pix_w_end-pix_w_start);
-  for (int i=initial_pos; i<=final_pos;i++){
-
-    if ((i<=(nlines * image->w)+pix_w_end) && (i>=(nlines*image->w)+pix_w_start)){
-      image->data[j].r=img->data[i].r;
-      image->data[j].g=img->data[i].g;
-      image->data[j].b=img->data[i].b;
-      j++;
-
-    }
-  else{
-    nlines++;
+  return tmp;
 }
 
-
-  }
-    return image;
-}*/
 
 /*
 *Função que aplica uma watermark a uma imagem rgb.
@@ -172,10 +143,25 @@ RGB_IMAGE * access_regionRGB(RGB_IMAGE *img, int x, int y, int w, int h){
 * @return RGB_IMAGE Nova Imagem RGB com watermark aplicada.
 */
 
-/*RGB_IMAGE * applyWatermark(RGB_IMAGE *big_img, RGB_IMAGE * other_img){
+RGB_IMAGE * applyWatermarkRGB(RGB_IMAGE *original, RGB_IMAGE * watermark,int pix_h_start, int pix_w_start, int pix_h_end, int pix_w_end){
+  RGB_IMAGE * tmp=CreateImageRGB(original->h, original->w);
+  int counter=0;
+  for (int i=0; i<original->size;i++){
+    if (((i / original->w) > pix_h_start) &&  ((i / original->w)<pix_h_end)  && ((i%original->w) >pix_w_start) && ((i%original->w)<pix_w_end)) {
+      tmp->data[i].r=0.6 * original->data[i].r+0.4 * watermark->data[counter].r;
+      tmp->data[i].g=0.6 * original->data[i].g+0.4 * watermark->data[counter].g;
+      tmp->data[i].b=0.6 * original->data[i].b+0.4 * watermark->data[counter].b;
+      counter++;
+    }
+    else{
+      tmp->data[i]=original->data[i];
 
+    }
+
+  }
+  return tmp;
 }
-*/
+
 /*
 *Função que guarda uma RGB_Image num ficheiro.
 * @param img RGB_IMAGE que se quer guardar.
@@ -189,12 +175,7 @@ void saveOnFileRGB(RGB_IMAGE *img, char *nome){
   fprintf(fp, "P6\n");
   fprintf(fp, "%d %d\n", img->h, img->w);
   fprintf(fp, "%d\n",255);
-  /*for(int i = 0; i < (img->h)*(img->w); i++){
-    fwrite(&img->data[i].r, sizeof(char), 1, fp);
-    fwrite(&img->data[i].g, sizeof(char), 1, fp);
-    fwrite(&img->data[i].b, sizeof(char), 1, fp);
-  }*/
-  fwrite(img->data, img->h*3, img->w, fp);
+  fwrite(img->data, img->h * 3, img->w,fp);
 }
 
 
@@ -207,11 +188,58 @@ void saveOnFileRGB(RGB_IMAGE *img, char *nome){
 
 void AccessPixelRGB(RGB_IMAGE *img, int pix_h, int pix_w){
   int pos_pix=pix_h*(img->w)+ pix_w;
-  printf ("%d %d %d", img->data[pos_pix].r,img->data[pos_pix].g, img->data[pos_pix].b);
+
 
 }
+/*
+ * Função que aplica um filter a uma imagem RGB.
 
+ *@param img RGB_IMAGE que irá receber o filtro.
+ *@return tmp RGB_IMAGE com o filtro aplicado.
+ */
+RGB_IMAGE * applyFilter(RGB_IMAGE *img){
+  RGB_IMAGE *tmp = CreateImageRGB(img->h, img->w);
 
+  int counter = 0;
+  int kernel[9] ={-1,0,1,
+          0,0,0,
+          1,0,-1};
+  for(int i = 0; i < img->size; i++){
+    if(i < img->w || i%img->w == 0 || (i+1)%img->w == 0 || i > (img->w)*(img->w-1)){
+      tmp->data[i].r = 0;
+      tmp->data[i].g = 0;
+      tmp->data[i].b = 0;
+      counter++;
+
+    }
+    else{
+      int newPixel = 0;
+      int kernelValue = 0;
+      int t;
+      for(int a = 0; a < 3; a++){
+
+        if(a == 0){
+          t = -512;
+        }
+        else if(a == 1){
+          t = 0;
+        }
+        else{
+          t = 512;
+        }
+        newPixel += img->data[i+t+a].r*kernel[kernelValue];
+        newPixel += img->data[i+t+a].g*kernel[kernelValue];
+        newPixel += img->data[i+t+a].b*kernel[kernelValue];
+        kernelValue++;
+
+      }
+      tmp->data[i].r = newPixel/9;
+      tmp->data[i].g = newPixel/9;
+      tmp->data[i].b= newPixel/9;
+    }
+  }
+  return tmp;
+}
 
 
   /*
@@ -257,7 +285,6 @@ GRAY_IMAGE * convertToGray(RGB_IMAGE * img){
 
 GRAY_IMAGE * convertToChannel(RGB_IMAGE * img, char * channel){
   GRAY_IMAGE *tmp=CreateImageGRAY(img->h,img->w);
-  printf("%s\n", channel);
   if (strcmp(channel, "Red")){
     for (int i=0; i<img->h * img->w;i++){
       tmp->data[i].gray=img->data[i].r;
@@ -297,10 +324,10 @@ GRAY_IMAGE * LoadFromFileGRAY(char *nome){
   }
 
   fscanf(fp, "%d %d", &h, &w);
-  printf("%d %d ", h,w);
+
 
   fscanf(fp, "%d", &nobits);
-  printf("%d ", nobits);
+
   GRAY_IMAGE *img=CreateImageGRAY(h,w);
 
   fread(img->data, img->h, img->w, fp);
@@ -316,7 +343,6 @@ GRAY_IMAGE * LoadFromFileGRAY(char *nome){
 */
 void saveOnFileGRAY(GRAY_IMAGE *img, char *nome){
   FILE *fp;
-  printf("ola");
   fp=fopen(nome ,"wb");
   fprintf(fp, "P5\n");
   fprintf(fp, "%d %d\n", img->h, img->w);
@@ -334,7 +360,7 @@ void saveOnFileGRAY(GRAY_IMAGE *img, char *nome){
 
 void AccessPixelGRAY(GRAY_IMAGE *img, int pix_h, int pix_w){
   int pos_pix=pix_h*(img->h)+ pix_w*(img->w);
-  printf ("%d ", img->data[pos_pix].gray);
+
 
 }
 
@@ -364,12 +390,15 @@ GRAY_IMAGE * change_intensityGRAY(GRAY_IMAGE *img, int intensity){
 }
 
 /*
-* Função que cria uma imagem em binario
-* @param height Numero de linhas da imagem.
-* @param width Numero de colunas da imagem.
-* @return tmp Retorna uma estrutura BIN_IMAGE.
-*/
+ * Função que recorta uma imagem em Grayscale
+ * e retorna esse mesmo recorte, que é também uma GRAY_IMAGE.
 
+ *@param x largura inicial do recorte.
+ *@param y y altura inicial do recorte.
+ *@param w largura final do recorte.
+ *@param h altura final do recorte.
+ *@return tmp GRAY_IMAGE obtida através do recorte da imagem original.
+ */
 GRAY_IMAGE * access_regionGRAY(GRAY_IMAGE *img, int x, int y, int w, int h){
   GRAY_IMAGE *tmp = CreateImageGRAY(h-y,w-x);
   int lowerBound = (x + y)*img->w;
@@ -392,18 +421,54 @@ GRAY_IMAGE * access_regionGRAY(GRAY_IMAGE *img, int x, int y, int w, int h){
 }
 
 
+/*
+ * Função que aplica um watermark, que é uma GRAY_IMAGE, a uma imagem de maiores dimensões,
+ * também ela em Grayscale.
+ *
+ * @param original GRAY_IMAGE onde irá ser aplicada a watermark.
+ * @param watermark Watermark que irá ser aplicado.
+ * @param pix_h_start x onde irá ser iniciado o watermark na imagem original.
+ * @param pix_w_start y onde irá ser iniciado o watermark na imagem original.
+ * @param pix_h_end x onde irá terminar o watermark na imagem original.
+ * @param pix_w_end y onde irá terminar o watermark na imagem original.
+ */
+GRAY_IMAGE * applyWatermarkGRAY(GRAY_IMAGE *original , GRAY_IMAGE *watermark,int pix_h_start, int pix_w_start,int  pix_h_end, int pix_w_end){
+
+  GRAY_IMAGE * tmp=CreateImageGRAY(original->h, original->w);
+  int counter=0;
+  for (int i=0; i<original->size;i++){
+    if (((i / original->w) > pix_h_start) &&  ((i / original->w)<pix_h_end)  && ((i%original->w) >pix_w_start) && ((i%original->w)<pix_w_end)) {
+      tmp->data[i].gray=0.6 * original->data[i].gray+0.4 * watermark->data[counter].gray;
+      counter++;
+    }
+    else{
+      tmp->data[i]=original->data[i];
+
+    }
+
+  }
+  return tmp;
+}
+
+/*
+ * Função que aplica um filter a uma imagem em Grayscale.
+
+ *@param img GRAY_IMAGE que irá receber o filtro.
+ *@return tmp GRAY_IMAGE com o filtro aplicado.
+ */
+
 GRAY_IMAGE * filterImageGRAY(GRAY_IMAGE *img){
   GRAY_IMAGE *tmp = CreateImageGRAY(img->h, img->w);
-  printf("\n");
+
   int counter = 0;
-  int kernel[9] ={1,2,1,   
-          2,4,2,
-          1,2,1};
+  int kernel[9] ={-1,0,1,
+          0,0,0,
+          1,0,-1};
   for(int i = 0; i < img->size; i++){
     if(i < img->w || i%img->w == 0 || (i+1)%img->w == 0 || i > (img->w)*(img->w-1)){
       tmp->data[i].gray = 0;
       counter++;
-      //printf("%d\n", counter);
+
     }
     else{
       int newPixel = 0;
@@ -423,17 +488,20 @@ GRAY_IMAGE * filterImageGRAY(GRAY_IMAGE *img){
           newPixel += img->data[i+t+b].gray*kernel[kernelValue];
         }
         kernelValue++;
-        //printf("%d %d %d\n", i, t, a);
       }
       tmp->data[i].gray = newPixel/9;
     }
   }
   return tmp;
+
 }
 
-
-
-
+/*
+* Função que cria uma imagem em binario
+* @param height Numero de linhas da imagem.
+* @param width Numero de colunas da imagem.
+* @return tmp Retorna uma estrutura BIN_IMAGE.
+*/
 BIN_IMAGE * CreateImageBIN(int height, int width){
   BIN_IMAGE *tmp;
   tmp=(BIN_IMAGE *)malloc(sizeof(BIN_IMAGE));
@@ -482,7 +550,7 @@ BIN_IMAGE * LoadFromBinFile(char * nome){
 * @param nome Nome do ficheiro da imagem pretendida.
 * @return img Retorna uma nova estrutura BIN_IMAGE.
 */
-BIN_IMAGE * LoadFromGrayFile(char *nome){
+BIN_IMAGE * LoadFromGrayFile(char *nome,int threshold){
   char buff[32];
   FILE *fp;
 
@@ -498,7 +566,6 @@ BIN_IMAGE * LoadFromGrayFile(char *nome){
   fscanf(fp, "%d %d", &h, &w);
 
   fscanf(fp, "%d", &nobits);
-  int threshold=128;
   BIN_IMAGE *img=CreateImageBIN(h,w);
   fread(img->data,img->h, img->w,fp);
   for (int i=0; i<img->size;i++){

@@ -91,11 +91,18 @@ RGB_IMAGE * access_regionRGB(RGB_IMAGE *, int pix_h_start, int pix_h_end, int pi
 RGB_IMAGE * change_intensityRGB(RGB_IMAGE *, int intensity);
 
 /*
+ * Função que aplica um filter a uma imagem RGB.
+
+ *@param img RGB_IMAGE que irá receber o filtro.
+ *@return tmp RGB_IMAGE com o filtro aplicado.
+ */
+RGB_IMAGE * applyFilter(RGB_IMAGE *);
+/*
 *Função que aplica uma watermark a uma imagem rgb.
 * @param big_img RGB_IMAGE onde se irá ser colocada a watermark.
 * @param other_img Imagem da watermark.
 * @return RGB_IMAGE Nova Imagem RGB com watermark aplicada.
 */
-RGB_IMAGE * applyWatermarkRGB(RGB_IMAGE *, RGB_IMAGE *);
+RGB_IMAGE * applyWatermarkRGB(RGB_IMAGE *, RGB_IMAGE *, int pix_h_start, int pix_w_start, int pix_h_end, int pix_w_end);
 
 #endif //_FORMATS_RGB_H
