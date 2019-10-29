@@ -54,8 +54,12 @@ RGB_IMAGE * LoadFromFileRGB(char *nome){
   fscanf(fp, "%d", &nobits);
   printf("%d ", nobits);
   RGB_IMAGE *img=CreateImageRGB(h,w);
+  /*for(int i = 0; i < w*h; i++){
+    fread(&img->data[i].r, sizeof(char), 1, fp);
+    fread(&img->data[i].g, sizeof(char), 1, fp);
+    fread(&img->data[i].b, sizeof(char), 1, fp);
+  }*/
 
-  fread(img->data, img->h * 3, img->w, fp);
   return img;
 }
 
@@ -113,7 +117,32 @@ RGB_IMAGE * change_intensityRGB(RGB_IMAGE *img, int intensity){
 * @param pix_w_end coluna onde se pretende acabar a região de interesse.
 * @return image Retorna uma nova RGB_IMAGE que é a região de interesse pretendida.
 */
-RGB_IMAGE * access_regionRGB(RGB_IMAGE *img, int pix_h_start, int pix_h_end, int pix_w_start, int pix_w_end){
+
+RGB_IMAGE * access_regionRGB(RGB_IMAGE *img, int x, int y, int w, int h){
+  RGB_IMAGE *tmp = CreateImageRGB(h-y,w-x);
+  int lowerBound = (x + y)*img->w;
+  int upperBound = lowerBound + tmp->h;
+  int imgSize = img->size;
+  int counter = 0;
+  for(int i = 0; i < imgSize; i++){
+    if( i < upperBound && i >= lowerBound){
+      if(counter != i)
+      tmp->data[i].r = img->data[i].r;
+      tmp->data[i].g = img->data[i].g;
+      tmp->data[i].b = img->data[i].b;
+      printf("%d %d %d\n", img->data[i].r, img->data[i].g, img->data[i].b);
+      counter++;
+    }
+    if(i == upperBound ){
+      i--;
+      lowerBound += img->w;
+      upperBound += img->w;
+    }
+  }
+  //printf("%d\n", counter);
+  return img;
+}
+/*RGB_IMAGE * access_regionRGB(RGB_IMAGE *img, int pix_h_start, int pix_h_end, int pix_w_start, int pix_w_end){
 
   int initial_pos=(pix_w_start * (img->w))+pix_h_start;
   int final_pos=(pix_w_end * (img->w))+pix_h_end;
@@ -138,7 +167,7 @@ RGB_IMAGE * access_regionRGB(RGB_IMAGE *img, int pix_h_start, int pix_h_end, int
 
   }
     return image;
-}
+}*/
 
 /*
 *Função que aplica uma watermark a uma imagem rgb.
@@ -164,7 +193,12 @@ void saveOnFileRGB(RGB_IMAGE *img, char *nome){
   fprintf(fp, "P6\n");
   fprintf(fp, "%d %d\n", img->h, img->w);
   fprintf(fp, "%d\n",255);
-  fwrite(img->data, img->h * 3, img->w,fp);
+  /*for(int i = 0; i < (img->h)*(img->w); i++){
+    fwrite(&img->data[i].r, sizeof(char), 1, fp);
+    fwrite(&img->data[i].g, sizeof(char), 1, fp);
+    fwrite(&img->data[i].b, sizeof(char), 1, fp);
+  }*/
+  fwrite(img->data, img->h, img->w, fp);
 }
 
 
@@ -286,6 +320,7 @@ GRAY_IMAGE * LoadFromFileGRAY(char *nome){
 */
 void saveOnFileGRAY(GRAY_IMAGE *img, char *nome){
   FILE *fp;
+  printf("ola");
   fp=fopen(nome ,"wb");
   fprintf(fp, "P5\n");
   fprintf(fp, "%d %d\n", img->h, img->w);
@@ -338,6 +373,68 @@ GRAY_IMAGE * change_intensityGRAY(GRAY_IMAGE *img, int intensity){
 * @param width Numero de colunas da imagem.
 * @return tmp Retorna uma estrutura BIN_IMAGE.
 */
+
+GRAY_IMAGE * access_regionGRAY(GRAY_IMAGE *img, int x, int y, int w, int h){
+  GRAY_IMAGE *tmp = CreateImageGRAY(h-y,w-x);
+  int lowerBound = (x + y)*img->w;
+  int upperBound = lowerBound + tmp->h;
+  int imgSize = img->size;
+  int counter = 0;
+  for(int i = 0; i < imgSize; i++){
+    if( i < upperBound && i >= lowerBound){
+      //if(counter != i)
+      tmp->data[counter].gray = img->data[i].gray;
+      counter++;
+    }
+    if(i == upperBound ){
+      i--;
+      lowerBound += img->w;
+      upperBound += img->w;
+    }
+  }
+  return tmp;
+}
+
+
+GRAY_IMAGE * filterImageGRAY(GRAY_IMAGE *img){
+  GRAY_IMAGE *tmp = CreateImageGRAY(img->h, img->w);
+  printf("\n");
+  int counter = 0;
+  int kernel[9] ={-1,0,1,   
+          0,0,0,
+          1,0,-1};
+  for(int i = 0; i < img->size; i++){
+    if(i < img->w || i%img->w == 0 || (i+1)%img->w == 0 || i > (img->w)*(img->w-1)){
+      tmp->data[i].gray = 0;
+      counter++;
+      //printf("%d\n", counter);
+    }
+    else{
+      int newPixel = 0;
+      int kernelValue = 0;
+      int t;
+      for(int a = 0; a < 3; a++){
+        //printf("%d\n", i);
+        if(a == 0){
+          t = -512;
+        }
+        else if(a == 1){
+          t = 0;
+        }
+        else{
+          t = 512;
+        }
+        newPixel += img->data[i+t+a].gray*kernel[kernelValue];
+        kernelValue++;
+        //printf("%d %d %d\n", i, t, a);
+      }
+      tmp->data[i].gray = newPixel/9;
+    }
+  }
+  return tmp;
+}
+
+
 
 
 BIN_IMAGE * CreateImageBIN(int height, int width){

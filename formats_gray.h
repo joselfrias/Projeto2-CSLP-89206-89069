@@ -94,4 +94,7 @@ void AccessPixelGRAY(GRAY_IMAGE *, int pix_h, int pix_w);
 */
 GRAY_IMAGE * change_intensityGRAY(GRAY_IMAGE *, int intensity);
 
+GRAY_IMAGE * access_regionGRAY(GRAY_IMAGE *, int x1, int y1, int x2, int y2);
+
+GRAY_IMAGE * filterImageGRAY(GRAY_IMAGE *);
 #endif //_FORMATS_GRAY_H
