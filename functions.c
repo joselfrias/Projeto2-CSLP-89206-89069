@@ -220,13 +220,13 @@ RGB_IMAGE * applyFilter(RGB_IMAGE *img){
       for(int a = 0; a < 3; a++){
 
         if(a == 0){
-          t = -512;
+          t = -img->w;
         }
         else if(a == 1){
           t = 0;
         }
         else{
-          t = 512;
+          t = img->w;
         }
         newPixel += img->data[i+t+a].r*kernel[kernelValue];
         newPixel += img->data[i+t+a].g*kernel[kernelValue];
@@ -478,13 +478,13 @@ GRAY_IMAGE * filterImageGRAY(GRAY_IMAGE *img){
       for(int a = 0; a < 3; a++){
 
         if(a == 0){
-          t = -512;
+          t = -img->w;
         }
         else if(a == 1){
           t = 0;
         }
         else{
-          t = 512;
+          t = img->w;
         }
         newPixel += img->data[i+t+a].gray*kernel[kernelValue];
         kernelValue++;
