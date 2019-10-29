@@ -101,11 +101,63 @@ Functions</h2></td></tr>
 <tr class="separator:abf78b90cd8df3de27623247f2e15ac9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c3aa87df8f3662f78ff3ed2f9aa2f4e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="formats__gray_8h.html#a9c3aa87df8f3662f78ff3ed2f9aa2f4e">change_intensityGRAY</a> (<a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a> *, int intensity)</td></tr>
 <tr class="separator:a9c3aa87df8f3662f78ff3ed2f9aa2f4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a331818e4f4c1a7c47c34b61873f51855"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="formats__gray_8h.html#a331818e4f4c1a7c47c34b61873f51855">access_regionGRAY</a> (<a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a> *img, int x, int y, int w, int h)</td></tr>
+<tr class="separator:a331818e4f4c1a7c47c34b61873f51855"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a865a5066a32b730fd515d193c6468b59"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="formats__gray_8h.html#a865a5066a32b730fd515d193c6468b59">applyWatermarkGRAY</a> (<a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a> *, <a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a> *, int pix_h_start, int pix_w_start, int pix_h_end, int pix_w_end)</td></tr>
+<tr class="separator:a865a5066a32b730fd515d193c6468b59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af87a830bd97384ce621abeeb7d59df4b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="formats__gray_8h.html#af87a830bd97384ce621abeeb7d59df4b">filterImageGRAY</a> (<a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a> *img)</td></tr>
+<tr class="separator:af87a830bd97384ce621abeeb7d59df4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Cabeçalhos de funções para aplicação em imagens com formato Grayscale. </p>
 <p>Contém os headers das funções necessárias para a manipulação de imagens Grayscale, definindo nomes das funções bem como os seus argumentos. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a331818e4f4c1a7c47c34b61873f51855"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a331818e4f4c1a7c47c34b61873f51855">&#9670;&nbsp;</a></span>access_regionGRAY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a>* access_regionGRAY </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a> *&#160;</td>
+          <td class="paramname"><em>img</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>h</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="abf78b90cd8df3de27623247f2e15ac9a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abf78b90cd8df3de27623247f2e15ac9a">&#9670;&nbsp;</a></span>AccessPixelGRAY()</h2>
 
@@ -129,6 +181,58 @@ Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>pix_w</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a865a5066a32b730fd515d193c6468b59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a865a5066a32b730fd515d193c6468b59">&#9670;&nbsp;</a></span>applyWatermarkGRAY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a>* applyWatermarkGRAY </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pix_h_start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pix_w_start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pix_h_end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pix_w_end</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -236,6 +340,24 @@ Functions</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af87a830bd97384ce621abeeb7d59df4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af87a830bd97384ce621abeeb7d59df4b">&#9670;&nbsp;</a></span>filterImageGRAY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a>* filterImageGRAY </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a> *&#160;</td>
+          <td class="paramname"><em>img</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">

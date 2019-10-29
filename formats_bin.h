@@ -55,7 +55,7 @@ void AccessPixelBIN(BIN_IMAGE *, int pix_h, int pix_w);
 * @param nome Nome do ficheiro da imagem pretendida.
 * @return img Retorna uma nova estrutura BIN_IMAGE.
 */
-BIN_IMAGE * LoadFromGrayFile(char *);
+BIN_IMAGE * LoadFromGrayFile(char *, int threshold);
 
 /*
 * Função que carrega de um ficheiro que contém uma Imagem EM BINARIO

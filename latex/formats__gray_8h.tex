@@ -30,6 +30,12 @@ void \mbox{\hyperlink{formats__gray_8h_a0fd484b5b99cf2d319f55206108b23f2}{save\+
 void \mbox{\hyperlink{formats__gray_8h_abf78b90cd8df3de27623247f2e15ac9a}{Access\+Pixel\+G\+R\+AY}} (\mbox{\hyperlink{structGRAY__IMAGE}{G\+R\+A\+Y\+\_\+\+I\+M\+A\+GE}} $\ast$, int pix\+\_\+h, int pix\+\_\+w)
 \item 
 \mbox{\hyperlink{structGRAY__IMAGE}{G\+R\+A\+Y\+\_\+\+I\+M\+A\+GE}} $\ast$ \mbox{\hyperlink{formats__gray_8h_a9c3aa87df8f3662f78ff3ed2f9aa2f4e}{change\+\_\+intensity\+G\+R\+AY}} (\mbox{\hyperlink{structGRAY__IMAGE}{G\+R\+A\+Y\+\_\+\+I\+M\+A\+GE}} $\ast$, int intensity)
+\item 
+\mbox{\hyperlink{structGRAY__IMAGE}{G\+R\+A\+Y\+\_\+\+I\+M\+A\+GE}} $\ast$ \mbox{\hyperlink{formats__gray_8h_a331818e4f4c1a7c47c34b61873f51855}{access\+\_\+region\+G\+R\+AY}} (\mbox{\hyperlink{structGRAY__IMAGE}{G\+R\+A\+Y\+\_\+\+I\+M\+A\+GE}} $\ast$img, int x, int y, int w, int h)
+\item 
+\mbox{\hyperlink{structGRAY__IMAGE}{G\+R\+A\+Y\+\_\+\+I\+M\+A\+GE}} $\ast$ \mbox{\hyperlink{formats__gray_8h_a865a5066a32b730fd515d193c6468b59}{apply\+Watermark\+G\+R\+AY}} (\mbox{\hyperlink{structGRAY__IMAGE}{G\+R\+A\+Y\+\_\+\+I\+M\+A\+GE}} $\ast$, \mbox{\hyperlink{structGRAY__IMAGE}{G\+R\+A\+Y\+\_\+\+I\+M\+A\+GE}} $\ast$, int pix\+\_\+h\+\_\+start, int pix\+\_\+w\+\_\+start, int pix\+\_\+h\+\_\+end, int pix\+\_\+w\+\_\+end)
+\item 
+\mbox{\hyperlink{structGRAY__IMAGE}{G\+R\+A\+Y\+\_\+\+I\+M\+A\+GE}} $\ast$ \mbox{\hyperlink{formats__gray_8h_af87a830bd97384ce621abeeb7d59df4b}{filter\+Image\+G\+R\+AY}} (\mbox{\hyperlink{structGRAY__IMAGE}{G\+R\+A\+Y\+\_\+\+I\+M\+A\+GE}} $\ast$img)
 \end{DoxyCompactItemize}
 
 
@@ -39,11 +45,23 @@ Cabeçalhos de funções para aplicação em imagens com formato Grayscale.
 Contém os headers das funções necessárias para a manipulação de imagens Grayscale, definindo nomes das funções bem como os seus argumentos. 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{formats__gray_8h_a331818e4f4c1a7c47c34b61873f51855}\label{formats__gray_8h_a331818e4f4c1a7c47c34b61873f51855}} 
+\index{formats\_gray.h@{formats\_gray.h}!access\_regionGRAY@{access\_regionGRAY}}
+\index{access\_regionGRAY@{access\_regionGRAY}!formats\_gray.h@{formats\_gray.h}}
+\doxysubsubsection{\texorpdfstring{access\_regionGRAY()}{access\_regionGRAY()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structGRAY__IMAGE}{G\+R\+A\+Y\+\_\+\+I\+M\+A\+GE}}$\ast$ access\+\_\+region\+G\+R\+AY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGRAY__IMAGE}{G\+R\+A\+Y\+\_\+\+I\+M\+A\+GE}} $\ast$}]{img,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{w,  }\item[{int}]{h }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{formats__gray_8h_abf78b90cd8df3de27623247f2e15ac9a}\label{formats__gray_8h_abf78b90cd8df3de27623247f2e15ac9a}} 
 \index{formats\_gray.h@{formats\_gray.h}!AccessPixelGRAY@{AccessPixelGRAY}}
 \index{AccessPixelGRAY@{AccessPixelGRAY}!formats\_gray.h@{formats\_gray.h}}
 \doxysubsubsection{\texorpdfstring{AccessPixelGRAY()}{AccessPixelGRAY()}}
 {\footnotesize\ttfamily void Access\+Pixel\+G\+R\+AY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGRAY__IMAGE}{G\+R\+A\+Y\+\_\+\+I\+M\+A\+GE}} $\ast$}]{,  }\item[{int}]{pix\+\_\+h,  }\item[{int}]{pix\+\_\+w }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{formats__gray_8h_a865a5066a32b730fd515d193c6468b59}\label{formats__gray_8h_a865a5066a32b730fd515d193c6468b59}} 
+\index{formats\_gray.h@{formats\_gray.h}!applyWatermarkGRAY@{applyWatermarkGRAY}}
+\index{applyWatermarkGRAY@{applyWatermarkGRAY}!formats\_gray.h@{formats\_gray.h}}
+\doxysubsubsection{\texorpdfstring{applyWatermarkGRAY()}{applyWatermarkGRAY()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structGRAY__IMAGE}{G\+R\+A\+Y\+\_\+\+I\+M\+A\+GE}}$\ast$ apply\+Watermark\+G\+R\+AY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGRAY__IMAGE}{G\+R\+A\+Y\+\_\+\+I\+M\+A\+GE}} $\ast$}]{,  }\item[{\mbox{\hyperlink{structGRAY__IMAGE}{G\+R\+A\+Y\+\_\+\+I\+M\+A\+GE}} $\ast$}]{,  }\item[{int}]{pix\+\_\+h\+\_\+start,  }\item[{int}]{pix\+\_\+w\+\_\+start,  }\item[{int}]{pix\+\_\+h\+\_\+end,  }\item[{int}]{pix\+\_\+w\+\_\+end }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{formats__gray_8h_a9c3aa87df8f3662f78ff3ed2f9aa2f4e}\label{formats__gray_8h_a9c3aa87df8f3662f78ff3ed2f9aa2f4e}} 
 \index{formats\_gray.h@{formats\_gray.h}!change\_intensityGRAY@{change\_intensityGRAY}}
@@ -68,6 +86,12 @@ Contém os headers das funções necessárias para a manipulação de imagens Gr
 \index{CreateImageGRAY@{CreateImageGRAY}!formats\_gray.h@{formats\_gray.h}}
 \doxysubsubsection{\texorpdfstring{CreateImageGRAY()}{CreateImageGRAY()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structGRAY__IMAGE}{G\+R\+A\+Y\+\_\+\+I\+M\+A\+GE}}$\ast$ Create\+Image\+G\+R\+AY (\begin{DoxyParamCaption}\item[{int}]{height,  }\item[{int}]{width }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{formats__gray_8h_af87a830bd97384ce621abeeb7d59df4b}\label{formats__gray_8h_af87a830bd97384ce621abeeb7d59df4b}} 
+\index{formats\_gray.h@{formats\_gray.h}!filterImageGRAY@{filterImageGRAY}}
+\index{filterImageGRAY@{filterImageGRAY}!formats\_gray.h@{formats\_gray.h}}
+\doxysubsubsection{\texorpdfstring{filterImageGRAY()}{filterImageGRAY()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structGRAY__IMAGE}{G\+R\+A\+Y\+\_\+\+I\+M\+A\+GE}}$\ast$ filter\+Image\+G\+R\+AY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGRAY__IMAGE}{G\+R\+A\+Y\+\_\+\+I\+M\+A\+GE}} $\ast$}]{img }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{formats__gray_8h_abdd4accd11f30a3847a0709f88f6b6cf}\label{formats__gray_8h_abdd4accd11f30a3847a0709f88f6b6cf}} 
 \index{formats\_gray.h@{formats\_gray.h}!LoadFromFileGRAY@{LoadFromFileGRAY}}

@@ -99,8 +99,10 @@ Functions</h2></td></tr>
 <tr class="separator:ac32c9cd6aa6a52a9269cc9b93e282910"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ecd0e40af508a6d9f4d0e8b2453582c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="formats__rgb_8h.html#a2ecd0e40af508a6d9f4d0e8b2453582c">change_intensityRGB</a> (<a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *, int intensity)</td></tr>
 <tr class="separator:a2ecd0e40af508a6d9f4d0e8b2453582c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a264433ce6e3f2b48d33e353858200a82"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="formats__rgb_8h.html#a264433ce6e3f2b48d33e353858200a82">applyWatermarkRGB</a> (<a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *, <a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *)</td></tr>
-<tr class="separator:a264433ce6e3f2b48d33e353858200a82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a4cc5fc7d8e372c8df1ad3ea2a02cb2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="formats__rgb_8h.html#a0a4cc5fc7d8e372c8df1ad3ea2a02cb2">applyFilter</a> (<a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *)</td></tr>
+<tr class="separator:a0a4cc5fc7d8e372c8df1ad3ea2a02cb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15d06ddfb70cf1542a79645689e813bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="formats__rgb_8h.html#a15d06ddfb70cf1542a79645689e813bc">applyWatermarkRGB</a> (<a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *, <a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *, int pix_h_start, int pix_w_start, int pix_h_end, int pix_w_end)</td></tr>
+<tr class="separator:a15d06ddfb70cf1542a79645689e813bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Cabeçalhos de funções para aplicação em imagens com formato RGB. </p>
@@ -186,8 +188,26 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a264433ce6e3f2b48d33e353858200a82"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a264433ce6e3f2b48d33e353858200a82">&#9670;&nbsp;</a></span>applyWatermarkRGB()</h2>
+<a id="a0a4cc5fc7d8e372c8df1ad3ea2a02cb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a4cc5fc7d8e372c8df1ad3ea2a02cb2">&#9670;&nbsp;</a></span>applyFilter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a>* applyFilter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a15d06ddfb70cf1542a79645689e813bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15d06ddfb70cf1542a79645689e813bc">&#9670;&nbsp;</a></span>applyWatermarkRGB()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -202,7 +222,31 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *&#160;</td>
-          <td class="paramname">&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pix_h_start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pix_w_start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pix_h_end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pix_w_end</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
