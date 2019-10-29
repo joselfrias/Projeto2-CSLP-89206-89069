@@ -15,8 +15,8 @@ int main(){
 
   //RGB_IMAGE *imagem;
   //RGB_IMAGE *newImage;
-  //GRAY_IMAGE *imagem;
- // GRAY_IMAGE *newImage;
+  GRAY_IMAGE *imagem;
+  GRAY_IMAGE *newImage;
   imagem = LoadFromFileGRAY("gray_lena.pgm");
   //newImage= access_regionGRAY(imagem, 0, 0, 512, 255);
   //imagem = LoadFromFileGRAY("cutOut.pgm");
