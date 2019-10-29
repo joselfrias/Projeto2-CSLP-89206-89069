@@ -34,7 +34,7 @@ int main(){
 					for(int u = -1; u < 2; u++){
 						x = x + (buff[i+u][z+w]*kernel[y]);
 						y++;
-					}	
+					}
 				}
 				newBuff[i][z] = x/10;
 			}

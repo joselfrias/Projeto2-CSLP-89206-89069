@@ -4,13 +4,15 @@
 #include "formats_rgb.h"
 int main(){
   //Testing RGB FUNCTIONS
+  /*
   RGB_IMAGE *imagem;
   RGB_IMAGE *newImage;
   imagem=LoadFromFileRGB("lena.ppm");
   saveOnFileRGB(imagem, "file.ppm");
 //  AccessPixelRGB(imagem, 501,499);
-  newImage=access_regionRGB(imagem,0,500,0,500);
+  newImage=access_regionRGB(imagem,0,0,300,350);
   saveOnFileRGB(newImage,"newfile.ppm");
+  */
 /*
   newImage=change_intensityRGB(imagem, -100);
   saveOnFileRGB(newImage,"intensity.ppm");
@@ -24,17 +26,30 @@ int main(){
   saveOnFileBIN(imagem, "file_gray.pgm");
   newBinImage=LoadFromBinFile("file_gray.pgm");
   saveOnFileBIN(newBinImage,"file_grayV2.pgm");
-
+*/
   //TODO define threshold
   //Testing Gray Image functions
-
+  RGB_IMAGE *watermark=LoadFromFileRGB("girl.ppm");
+  GRAY_IMAGE *gray_watermark;
+  GRAY_IMAGE *gray_watermark_crop;
+  gray_watermark=convertToGray(watermark);
+  gray_watermark_crop=access_regionGRAY(gray_watermark ,0,0,300,300);
+  saveOnFileGRAY(gray_watermark,"gray_girl.pgm");
+  saveOnFileGRAY(gray_watermark_crop,"girl_access.pgm");
   GRAY_IMAGE *imagem;
   imagem=LoadFromFileGRAY("gray_lena.pgm");
   GRAY_IMAGE *newImage;
+  GRAY_IMAGE *newImageV2;
+  GRAY_IMAGE *newImageV3;
   saveOnFileGRAY(imagem, "file_gray.pgm");
   newImage=change_intensityGRAY(imagem, 100);
   saveOnFileGRAY(newImage,"intens_gray.pgm");
-  */
+  newImageV2=access_regionGRAY(imagem ,0,0,400,400);
+  saveOnFileGRAY(newImageV2, "gray_lena_region.pgm");
+  newImageV3=applyWatermarkGRAY(imagem, gray_watermark_crop,0,0,301,301);
+  saveOnFileGRAY(newImageV3,"watermark_lena.pgm");
+
+
 
 
 /*

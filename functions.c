@@ -51,8 +51,8 @@ RGB_IMAGE * LoadFromFileRGB(char *nome){
   fscanf(fp, "%d %d", &h, &w);
   printf("%d %d ", h,w);
 
-  fscanf(fp, "%d", &nobits);
-  printf("%d ", nobits);
+  fscanf(fp, "%d \n", &nobits);
+  printf("%d", nobits);
   RGB_IMAGE *img=CreateImageRGB(h,w);
 
   fread(img->data, img->h * 3, img->w, fp);
@@ -113,30 +113,43 @@ RGB_IMAGE * change_intensityRGB(RGB_IMAGE *img, int intensity){
 * @param pix_w_end coluna onde se pretende acabar a região de interesse.
 * @return image Retorna uma nova RGB_IMAGE que é a região de interesse pretendida.
 */
-RGB_IMAGE * access_regionRGB(RGB_IMAGE *img, int pix_h_start, int pix_h_end, int pix_w_start, int pix_w_end){
+RGB_IMAGE * access_regionRGB(RGB_IMAGE *img, int pix_h_start, int pix_w_start, int pix_h_end, int pix_w_end){
 
-  int initial_pos=(pix_w_start * (img->w))+pix_h_start;
-  int final_pos=(pix_w_end * (img->w))+pix_h_end;
-  printf ("%d\n",initial_pos);
-  printf ("%d\n",final_pos);
-  int nlines=0;
-  int j=0;
+
   RGB_IMAGE *image=CreateImageRGB(pix_h_end-pix_h_start,pix_w_end-pix_w_start);
-  for (int i=initial_pos; i<=final_pos;i++){
 
-    if ((i<=(nlines * image->w)+pix_w_end) && (i>=(nlines*image->w)+pix_w_start)){
-      image->data[j].r=img->data[i].r;
-      image->data[j].g=img->data[i].g;
-      image->data[j].b=img->data[i].b;
-      j++;
-
+  RGB_PIXEL **newdata=(RGB_PIXEL **)malloc(sizeof(RGB_PIXEL *) *img->h);
+  for (int i=0; i<img->h;i++){
+    newdata[i]=(RGB_PIXEL *) malloc(img->h * sizeof(RGB_PIXEL));
+  }
+  for (int i=0; i<img->h;i++){
+    for (int j=0; j<img->w;j++){
+      newdata[i][j]=img->data[i*(img->w)+j];
     }
-  else{
-    nlines++;
-}
-
 
   }
+
+  RGB_PIXEL **new=(RGB_PIXEL **)malloc(sizeof(RGB_PIXEL *) *image->h);
+  for (int i=0; i<image->h;i++){
+    new[i]=(RGB_PIXEL *) malloc(image->w * sizeof(RGB_PIXEL));
+  }
+
+
+  for (int i=pix_h_start; i<pix_h_end;i++){
+    for (int j=pix_w_start;j<pix_w_end;j++){
+        new[i-pix_h_start][j-pix_w_start]=newdata[i][j];
+    }
+  }
+  int k=0;
+  for (int i=pix_h_start; i<pix_h_end;i++){
+
+    for (int j=pix_w_start;j<pix_w_end;j++){
+        image->data[k]=new[i][j];
+        k++;
+
+    }
+  }
+
     return image;
 }
 
@@ -147,10 +160,10 @@ RGB_IMAGE * access_regionRGB(RGB_IMAGE *img, int pix_h_start, int pix_h_end, int
 * @return RGB_IMAGE Nova Imagem RGB com watermark aplicada.
 */
 
-/*RGB_IMAGE * applyWatermark(RGB_IMAGE *big_img, RGB_IMAGE * other_img){
+RGB_IMAGE * applyWatermark(RGB_IMAGE *big_img, RGB_IMAGE * other_img){
 
 }
-*/
+
 /*
 *Função que guarda uma RGB_Image num ficheiro.
 * @param img RGB_IMAGE que se quer guardar.
@@ -181,7 +194,9 @@ void AccessPixelRGB(RGB_IMAGE *img, int pix_h, int pix_w){
 
 }
 
+RGB_IMAGE * applyFilter(RGB_IMAGE *img, int * kernel){
 
+}
 
 
   /*
@@ -332,6 +347,48 @@ GRAY_IMAGE * change_intensityGRAY(GRAY_IMAGE *img, int intensity){
 
 }
 
+GRAY_IMAGE * access_regionGRAY(GRAY_IMAGE *img, int pix_h_start, int pix_w_start, int pix_h_end, int pix_w_end){
+  GRAY_IMAGE *image=CreateImageGRAY(pix_h_end-pix_h_start,pix_w_end-pix_w_start);
+  int counter=0;
+
+
+  GRAY_PIXEL **newdata=(GRAY_PIXEL **)malloc(sizeof(GRAY_PIXEL *) *img->h);
+  for (int i=0; i<img->h;i++){
+    newdata[i]=(GRAY_PIXEL *) malloc(img->h * sizeof(GRAY_PIXEL));
+  }
+  for (int i=0; i<img->h;i++){
+    for (int j=0; j<img->w;j++){
+      newdata[i][j]=img->data[i*(img->w)+j];
+    }
+
+  }
+
+  GRAY_PIXEL **new=(GRAY_PIXEL **)malloc(sizeof(GRAY_PIXEL *) *image->h);
+  for (int i=0; i<image->h;i++){
+    new[i]=(GRAY_PIXEL *) malloc(image->w * sizeof(GRAY_PIXEL));
+  }
+
+
+  for (int i=pix_h_start; i<pix_h_end;i++){
+    for (int j=pix_w_start;j<pix_w_end;j++){
+        new[i-pix_h_start][j-pix_w_start]=newdata[i][j];
+    }
+  }
+  int k=0;
+  for (int i=pix_h_start; i<pix_h_end;i++){
+
+    for (int j=pix_w_start;j<pix_w_end;j++){
+        image->data[k]=new[i][j];
+        k++;
+
+    }
+  }
+
+
+    return image;
+
+
+}
 /*
 * Função que cria uma imagem em binario
 * @param height Numero de linhas da imagem.
@@ -339,6 +396,63 @@ GRAY_IMAGE * change_intensityGRAY(GRAY_IMAGE *img, int intensity){
 * @return tmp Retorna uma estrutura BIN_IMAGE.
 */
 
+GRAY_IMAGE * applyWatermarkGRAY(GRAY_IMAGE *original , GRAY_IMAGE *watermark,int pix_h_start, int pix_w_start,int  pix_h_end, int pix_w_end){
+
+  GRAY_IMAGE * tmp=CreateImageGRAY(original->h, original->w);
+  int counter=0;
+  int k=0;
+  for (int i=0; i<original->size;i++){
+    if (((i / original->w) > pix_h_start) &&  ((i / original->w)<pix_h_end)  && ((i%original->w) >pix_w_start) && ((i%original->w)<pix_w_end)) {
+      tmp->data[i].gray=0.6 * original->data[i].gray+0.4 * watermark->data[counter].gray;
+      counter++;
+    }
+    else{
+      tmp->data[i]=original->data[i];
+
+    }
+
+  }
+  return tmp;
+}
+  /*
+  GRAY_PIXEL * src = original->data;
+  GRAY_PIXEL * wm = watermark->data;
+  GRAY_PIXEL * buffer = malloc(original->size * sizeof(GRAY_PIXEL));
+  GRAY_IMAGE * ret = CreateImageGRAY(original->h, original->w);
+
+  GRAY_PIXEL result;
+  GRAY_PIXEL src_px, wm_px;
+
+  for (int i = 0; i < original->size; i++) {
+    if(i>=pix_w_start *(watermark->w) + pix_h_start && i<=pix_w_end*(watermark->w) + pix_h_end) // check if i is in bounds of watermark
+    {
+
+      src_px = *src;
+      wm_px = *wm;
+      result.gray = src_px.gray * 0.8 + wm_px.gray * 0.2;
+      buffer[i] = result;
+      wm++;
+
+    }
+    else
+    {
+
+      buffer[i] = *src;
+
+    }
+
+    src++;
+
+  }
+
+  ret->data = buffer;
+
+
+  return ret;
+
+
+}
+*/
 
 BIN_IMAGE * CreateImageBIN(int height, int width){
   BIN_IMAGE *tmp;

@@ -94,4 +94,8 @@ void AccessPixelGRAY(GRAY_IMAGE *, int pix_h, int pix_w);
 */
 GRAY_IMAGE * change_intensityGRAY(GRAY_IMAGE *, int intensity);
 
+GRAY_IMAGE * access_regionGRAY(GRAY_IMAGE *img, int pix_h_start, int pix_w_start, int pix_h_end, int pix_w_end);
+
+GRAY_IMAGE * applyWatermarkGRAY(GRAY_IMAGE *, GRAY_IMAGE *,int pix_h_start, int pix_w_start,int  pix_h_end, int pix_w_end);
+
 #endif //_FORMATS_GRAY_H
