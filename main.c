@@ -1,4 +1,4 @@
-/*
+/**
 * @file main.c
 * @brief Teste das funções desenvolvidas
 */
@@ -8,8 +8,8 @@
 #include "formats_rgb.h"
 int main(){
   //Teste para funções com Imagens RGB
-  /*De salientar que a função de watermark não permite obter um resultado
-  * correto quando a watermark é retangular.Para mais, a posição final da colocação
+  /**De salientar que a função de watermark não permite obter um resultado
+  * correto quando a watermark é retangular. Além disso, a posição final da colocação
   * do watermark terá de ser altura da watermark +1 e largura +1.
   */
 
@@ -69,7 +69,7 @@ int main(){
   GRAY_IMAGE *newImageGRAY;
 
   newImageGRAY=applyWatermarkGRAY(imagemGRAY, gray_watermark_crop,0,0,401,401);
-  saveOnFileGRAY(newImageGRAY, "watermark_pgm");
+  saveOnFileGRAY(newImageGRAY, "watermark_gray.pgm");
   GRAY_IMAGE *newImageGRAYV2;
   newImageGRAYV2=filterImageGRAY(gray_watermark);
   saveOnFileGRAY(newImageGRAYV2,"filtro.pgm");

@@ -155,6 +155,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que recorta uma imagem em Grayscale e retorna esse mesmo recorte, que é também uma <a class="el" href="structGRAY__IMAGE.html" title="Estrutura para representar uma imagem em Grayscale.">GRAY_IMAGE</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>largura inicial do recorte. </td></tr>
+    <tr><td class="paramname">y</td><td>y altura inicial do recorte. </td></tr>
+    <tr><td class="paramname">w</td><td>largura final do recorte. </td></tr>
+    <tr><td class="paramname">h</td><td>altura final do recorte. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>tmp <a class="el" href="structGRAY__IMAGE.html" title="Estrutura para representar uma imagem em Grayscale.">GRAY_IMAGE</a> obtida através do recorte da imagem original. </dd></dl>
 
 </div>
 </div>
@@ -168,7 +179,7 @@ Functions</h2></td></tr>
           <td class="memname">void AccessPixelGRAY </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a> *&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramname"><em>img</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -189,6 +200,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que acede a um pixel numa imagem Grayscale. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td>Imagem em grayscale a que se pretende aceder. </td></tr>
+    <tr><td class="paramname">pix_h</td><td>Linha do pixel a que se pretende obter. </td></tr>
+    <tr><td class="paramname">pix_w</td><td>Coluna do pixel a que se pretende aceder. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing. </dd></dl>
 
 </div>
 </div>
@@ -202,13 +222,13 @@ Functions</h2></td></tr>
           <td class="memname"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a>* applyWatermarkGRAY </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a> *&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramname"><em>original</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a> *&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramname"><em>watermark</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -241,6 +261,18 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que aplica um watermark, que é uma <a class="el" href="structGRAY__IMAGE.html" title="Estrutura para representar uma imagem em Grayscale.">GRAY_IMAGE</a>, a uma imagem de maiores dimensões, também ela em Grayscale.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">original</td><td><a class="el" href="structGRAY__IMAGE.html" title="Estrutura para representar uma imagem em Grayscale.">GRAY_IMAGE</a> onde irá ser aplicada a watermark. </td></tr>
+    <tr><td class="paramname">watermark</td><td>Watermark que irá ser aplicado. </td></tr>
+    <tr><td class="paramname">pix_h_start</td><td>x onde irá ser iniciado o watermark na imagem original. </td></tr>
+    <tr><td class="paramname">pix_w_start</td><td>y onde irá ser iniciado o watermark na imagem original. </td></tr>
+    <tr><td class="paramname">pix_h_end</td><td>x onde irá terminar o watermark na imagem original. </td></tr>
+    <tr><td class="paramname">pix_w_end</td><td>y onde irá terminar o watermark na imagem original. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -254,7 +286,7 @@ Functions</h2></td></tr>
           <td class="memname"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a>* change_intensityGRAY </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a> *&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramname"><em>img</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -269,6 +301,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que altera a intensidade da componente grayscale de uma imagem, retornando uma nova imagem. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td><a class="el" href="structGRAY__IMAGE.html" title="Estrutura para representar uma imagem em Grayscale.">GRAY_IMAGE</a> que se pretende alterar. </td></tr>
+    <tr><td class="paramname">intensity</td><td>Valor a alterar na componente grayscale de cada pixel. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structGRAY__IMAGE.html" title="Estrutura para representar uma imagem em Grayscale.">GRAY_IMAGE</a> Retorna uma imagem grayscale com as alterações de intensidade. </dd></dl>
 
 </div>
 </div>
@@ -282,13 +322,13 @@ Functions</h2></td></tr>
           <td class="memname"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a>* convertToChannel </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramname"><em>img</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname">&#160;</td>
+          <td class="paramname"><em>channel</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -297,6 +337,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que converte uma imagem RGB para uma em grayscale de acordo com o channel pretendido. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td><a class="el" href="structRGB__IMAGE.html" title="Estrura para representar uma Imagem RGB.">RGB_IMAGE</a> que se quer converter. </td></tr>
+    <tr><td class="paramname">channel</td><td>Channel que se quer obter na imagem grayscale. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>tmp Imagem em grayscale de acordo com a imagem rgb e o channel pretendido. </dd></dl>
 
 </div>
 </div>
@@ -310,11 +358,18 @@ Functions</h2></td></tr>
           <td class="memname"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a>* convertToGray </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><em>img</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que converte uma imagem RGB para uma em Grayscale. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td>Imagem RGB que se quer converter. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>tmp Imagem Grayscale que se quer obter. </dd></dl>
 
 </div>
 </div>
@@ -343,6 +398,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que cria uma imagem em GRAYSCALE </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">height</td><td>Numero de linhas da imagem. </td></tr>
+    <tr><td class="paramname">width</td><td>Numero de colunas da imagem. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>tmp Retorna uma estrutura <a class="el" href="structGRAY__IMAGE.html" title="Estrutura para representar uma imagem em Grayscale.">GRAY_IMAGE</a>. </dd></dl>
 
 </div>
 </div>
@@ -361,6 +424,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que aplica um filter a uma imagem em Grayscale.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td><a class="el" href="structGRAY__IMAGE.html" title="Estrutura para representar uma imagem em Grayscale.">GRAY_IMAGE</a> que irá receber o filtro. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>tmp <a class="el" href="structGRAY__IMAGE.html" title="Estrutura para representar uma imagem em Grayscale.">GRAY_IMAGE</a> com o filtro aplicado. </dd></dl>
 
 </div>
 </div>
@@ -379,6 +450,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que carrega de um ficheiro que contém uma Imagem GRAYSCALE para uma estrutura <a class="el" href="structGRAY__IMAGE.html" title="Estrutura para representar uma imagem em Grayscale.">GRAY_IMAGE</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nome</td><td>Nome do ficheiro da imagem pretendida. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>img Retorna uma nova estrutura <a class="el" href="structGRAY__IMAGE.html" title="Estrutura para representar uma imagem em Grayscale.">GRAY_IMAGE</a>. </dd></dl>
 
 </div>
 </div>
@@ -392,7 +470,7 @@ Functions</h2></td></tr>
           <td class="memname">void saveOnFileGRAY </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structGRAY__IMAGE.html">GRAY_IMAGE</a> *&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramname"><em>img</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -407,6 +485,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que guarda uma Gray_Image num ficheiro. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td><a class="el" href="structGRAY__IMAGE.html" title="Estrutura para representar uma imagem em Grayscale.">GRAY_IMAGE</a> que se quer guardar. </td></tr>
+    <tr><td class="paramname">nome</td><td>Nome do ficheiro onde a imagem será guardada. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>

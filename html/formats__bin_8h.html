@@ -93,8 +93,8 @@ Functions</h2></td></tr>
 <tr class="separator:ae74bc3a60e9b4830411ccfaad6c8d1e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62887edf3e913ff380ede82a6cb6831a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="formats__bin_8h.html#a62887edf3e913ff380ede82a6cb6831a">AccessPixelBIN</a> (<a class="el" href="structBIN__IMAGE.html">BIN_IMAGE</a> *, int pix_h, int pix_w)</td></tr>
 <tr class="separator:a62887edf3e913ff380ede82a6cb6831a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6769e9bf6cf0d6088d1b325c61ac215d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBIN__IMAGE.html">BIN_IMAGE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="formats__bin_8h.html#a6769e9bf6cf0d6088d1b325c61ac215d">LoadFromGrayFile</a> (char *)</td></tr>
-<tr class="separator:a6769e9bf6cf0d6088d1b325c61ac215d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cedde1125e0ffbaf4950578515bba98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBIN__IMAGE.html">BIN_IMAGE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="formats__bin_8h.html#a7cedde1125e0ffbaf4950578515bba98">LoadFromGrayFile</a> (char *, int threshold)</td></tr>
+<tr class="separator:a7cedde1125e0ffbaf4950578515bba98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcb8c9360f7a82965c067a45811e9ad7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBIN__IMAGE.html">BIN_IMAGE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="formats__bin_8h.html#afcb8c9360f7a82965c067a45811e9ad7">LoadFromBinFile</a> (char *)</td></tr>
 <tr class="separator:afcb8c9360f7a82965c067a45811e9ad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4527b7af1208e0ecf431454679f29209"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="formats__bin_8h.html#a4527b7af1208e0ecf431454679f29209">saveOnFileBIN</a> (<a class="el" href="structBIN__IMAGE.html">BIN_IMAGE</a> *, char *nome)</td></tr>
@@ -191,6 +191,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que cria uma imagem em binario </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">height</td><td>Numero de linhas da imagem. </td></tr>
+    <tr><td class="paramname">width</td><td>Numero de colunas da imagem. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>tmp Retorna uma estrutura <a class="el" href="structBIN__IMAGE.html" title="Estrutura para representar uma imagem em binário.">BIN_IMAGE</a>. </dd></dl>
 
 </div>
 </div>
@@ -204,16 +212,23 @@ Functions</h2></td></tr>
           <td class="memname"><a class="el" href="structBIN__IMAGE.html">BIN_IMAGE</a>* LoadFromBinFile </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><em>nome</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que carrega de um ficheiro que contém uma Imagem EM BINARIO para uma estrutura <a class="el" href="structBIN__IMAGE.html" title="Estrutura para representar uma imagem em binário.">BIN_IMAGE</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nome</td><td>Nome do ficheiro da imagem pretendida. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>img Retorna uma nova estrutura <a class="el" href="structBIN__IMAGE.html" title="Estrutura para representar uma imagem em binário.">BIN_IMAGE</a>. </dd></dl>
 
 </div>
 </div>
-<a id="a6769e9bf6cf0d6088d1b325c61ac215d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6769e9bf6cf0d6088d1b325c61ac215d">&#9670;&nbsp;</a></span>LoadFromGrayFile()</h2>
+<a id="a7cedde1125e0ffbaf4950578515bba98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cedde1125e0ffbaf4950578515bba98">&#9670;&nbsp;</a></span>LoadFromGrayFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -222,11 +237,28 @@ Functions</h2></td></tr>
           <td class="memname"><a class="el" href="structBIN__IMAGE.html">BIN_IMAGE</a>* LoadFromGrayFile </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><em>nome</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>threshold</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que carrega de um ficheiro que contém uma Imagem EM Grayscale para uma estrutura <a class="el" href="structBIN__IMAGE.html" title="Estrutura para representar uma imagem em binário.">BIN_IMAGE</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nome</td><td>Nome do ficheiro da imagem pretendida. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>img Retorna uma nova estrutura <a class="el" href="structBIN__IMAGE.html" title="Estrutura para representar uma imagem em binário.">BIN_IMAGE</a>. </dd></dl>
 
 </div>
 </div>
@@ -240,7 +272,7 @@ Functions</h2></td></tr>
           <td class="memname">void saveOnFileBIN </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structBIN__IMAGE.html">BIN_IMAGE</a> *&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramname"><em>img</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -255,6 +287,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que guarda uma BIN_Image num ficheiro. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td><a class="el" href="structBIN__IMAGE.html" title="Estrutura para representar uma imagem em binário.">BIN_IMAGE</a> que se quer guardar. </td></tr>
+    <tr><td class="paramname">nome</td><td>Nome do ficheiro onde a imagem será guardada. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>

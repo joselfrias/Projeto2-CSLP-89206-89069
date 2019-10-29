@@ -118,31 +118,31 @@ Functions</h2></td></tr>
           <td class="memname"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a>* access_regionRGB </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramname"><em>img</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>pix_h_start</em>, </td>
+          <td class="paramname"><em>x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>pix_h_end</em>, </td>
+          <td class="paramname"><em>y</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>pix_w_start</em>, </td>
+          <td class="paramname"><em>w</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>pix_w_end</em>&#160;</td>
+          <td class="paramname"><em>h</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -151,6 +151,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que acede a uma região de interesse de uma imagem, retornando uma nova imagem. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td><a class="el" href="structRGB__IMAGE.html" title="Estrura para representar uma Imagem RGB.">RGB_IMAGE</a> que se pretende alterar. </td></tr>
+    <tr><td class="paramname">pix_h_start</td><td>linha onde se pretende começar a região de interesse. </td></tr>
+    <tr><td class="paramname">pix_h_end</td><td>linha onde se pretende acabar a região de interesse. </td></tr>
+    <tr><td class="paramname">pix_w_start</td><td>coluna onde se pretende começar a região de interesse. </td></tr>
+    <tr><td class="paramname">pix_w_end</td><td>coluna onde se pretende acabar a região de interesse. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>image Retorna uma nova <a class="el" href="structRGB__IMAGE.html" title="Estrura para representar uma Imagem RGB.">RGB_IMAGE</a> que é a região de interesse pretendida. </dd></dl>
 
 </div>
 </div>
@@ -164,7 +175,7 @@ Functions</h2></td></tr>
           <td class="memname">void AccessPixelRGB </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramname"><em>img</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -185,6 +196,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que acede a um pixel RGB. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td><a class="el" href="structRGB__IMAGE.html" title="Estrura para representar uma Imagem RGB.">RGB_IMAGE</a> onde se pretende aceder. </td></tr>
+    <tr><td class="paramname">pix_h</td><td>Numero da linha do pixel. </td></tr>
+    <tr><td class="paramname">pix_w</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>
@@ -198,11 +218,19 @@ Functions</h2></td></tr>
           <td class="memname"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a>* applyFilter </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><em>img</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que aplica um filter a uma imagem RGB.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td><a class="el" href="structRGB__IMAGE.html" title="Estrura para representar uma Imagem RGB.">RGB_IMAGE</a> que irá receber o filtro. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>tmp <a class="el" href="structRGB__IMAGE.html" title="Estrura para representar uma Imagem RGB.">RGB_IMAGE</a> com o filtro aplicado. </dd></dl>
 
 </div>
 </div>
@@ -216,13 +244,13 @@ Functions</h2></td></tr>
           <td class="memname"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a>* applyWatermarkRGB </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramname"><em>original</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramname"><em>watermark</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -255,6 +283,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que aplica uma watermark a uma imagem rgb. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">big_img</td><td><a class="el" href="structRGB__IMAGE.html" title="Estrura para representar uma Imagem RGB.">RGB_IMAGE</a> onde se irá ser colocada a watermark. </td></tr>
+    <tr><td class="paramname">other_img</td><td>Imagem da watermark. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structRGB__IMAGE.html" title="Estrura para representar uma Imagem RGB.">RGB_IMAGE</a> Nova Imagem RGB com watermark aplicada. </dd></dl>
 
 </div>
 </div>
@@ -268,7 +304,7 @@ Functions</h2></td></tr>
           <td class="memname"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a>* change_intensityRGB </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramname"><em>img</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -283,6 +319,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que altera a intensidade de cada componente rgb de uma imagem, retornando uma nova imagem. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td><a class="el" href="structRGB__IMAGE.html" title="Estrura para representar uma Imagem RGB.">RGB_IMAGE</a> que se pretende alterar. </td></tr>
+    <tr><td class="paramname">intensity</td><td>Valor a alterar em cada uma das componentes de cada pixel. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structRGB__IMAGE.html" title="Estrura para representar uma Imagem RGB.">RGB_IMAGE</a> Retorna uma imagem rgb com as alterações de intensidade. </dd></dl>
 
 </div>
 </div>
@@ -311,6 +355,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que cria uma imagem em RGB.</p>
+<p>height Numero de linhas da imagem. width Numero de colunas da imagem. tmp Retorna uma estrutura <a class="el" href="structRGB__IMAGE.html" title="Estrura para representar uma Imagem RGB.">RGB_IMAGE</a>. </p>
 
 </div>
 </div>
@@ -324,11 +370,18 @@ Functions</h2></td></tr>
           <td class="memname"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a>* LoadFromFileRGB </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><em>nome</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que carrega um ficheiro em rgb para uma estrutura <a class="el" href="structRGB__IMAGE.html" title="Estrura para representar uma Imagem RGB.">RGB_IMAGE</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nome</td><td>Nome do ficheiro com a imagem rgb. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Retorna uma estrutura <a class="el" href="structRGB__IMAGE.html" title="Estrura para representar uma Imagem RGB.">RGB_IMAGE</a>. </dd></dl>
 
 </div>
 </div>
@@ -342,7 +395,7 @@ Functions</h2></td></tr>
           <td class="memname">void saveOnFileRGB </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structRGB__IMAGE.html">RGB_IMAGE</a> *&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramname"><em>img</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -357,6 +410,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Função que guarda uma RGB_Image num ficheiro. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td><a class="el" href="structRGB__IMAGE.html" title="Estrura para representar uma Imagem RGB.">RGB_IMAGE</a> que se quer guardar. </td></tr>
+    <tr><td class="paramname">nome</td><td>Nome do ficheiro onde a imagem será guardada. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>

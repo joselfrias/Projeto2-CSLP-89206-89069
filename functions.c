@@ -1,4 +1,4 @@
-/** \file functions.c
+/** @file functions.c
  *  @brief Implementação das funções definidas nos header files.
  *
  *
@@ -10,7 +10,7 @@
 #include "formats_gray.h"
 #include "formats_rgb.h"
 
-/*
+/**
 *  Função que cria uma imagem em RGB.
 *
 *  height Numero de linhas da imagem.
@@ -29,7 +29,7 @@ RGB_IMAGE * CreateImageRGB(int height, int width){
   return tmp;
 }
 
-/*
+/**
 *Função que carrega um ficheiro em rgb para uma estrutura RGB_IMAGE.
 * @param nome Nome do ficheiro com a imagem rgb.
 * @return Retorna uma estrutura RGB_IMAGE.
@@ -60,7 +60,7 @@ RGB_IMAGE * LoadFromFileRGB(char *nome){
 }
 
 
-/* Função que altera a intensidade de cada componente rgb
+/** Função que altera a intensidade de cada componente rgb
 * de uma imagem, retornando uma nova imagem.
 * @param img RGB_IMAGE que se pretende alterar.
 * @param intensity Valor a alterar em cada uma das componentes de cada pixel.
@@ -104,7 +104,7 @@ RGB_IMAGE * change_intensityRGB(RGB_IMAGE *img, int intensity){
 
 }
 
-/* Função que acede a uma região de interesse
+/** Função que acede a uma região de interesse
 * de uma imagem, retornando uma nova imagem.
 * @param img RGB_IMAGE que se pretende alterar.
 * @param pix_h_start linha onde se pretende começar a região de interesse.
@@ -137,7 +137,7 @@ RGB_IMAGE * access_regionRGB(RGB_IMAGE *img, int x, int y, int w, int h){
 }
 
 
-/*
+/**
 *Função que aplica uma watermark a uma imagem rgb.
 * @param big_img RGB_IMAGE onde se irá ser colocada a watermark.
 * @param other_img Imagem da watermark.
@@ -163,7 +163,7 @@ RGB_IMAGE * applyWatermarkRGB(RGB_IMAGE *original, RGB_IMAGE * watermark,int pix
   return tmp;
 }
 
-/*
+/**
 *Função que guarda uma RGB_Image num ficheiro.
 * @param img RGB_IMAGE que se quer guardar.
 * @param nome Nome do ficheiro onde a imagem será guardada.
@@ -180,7 +180,7 @@ void saveOnFileRGB(RGB_IMAGE *img, char *nome){
 }
 
 
-/*Função que acede a um pixel RGB.
+/**Função que acede a um pixel RGB.
 * @param img RGB_IMAGE onde se pretende aceder.
 * @param pix_h Numero da linha do pixel.
 * @param pix_w
@@ -192,7 +192,7 @@ void AccessPixelRGB(RGB_IMAGE *img, int pix_h, int pix_w){
 
 
 }
-/*
+/**
  * Função que aplica um filter a uma imagem RGB.
 
  *@param img RGB_IMAGE que irá receber o filtro.
@@ -243,7 +243,7 @@ RGB_IMAGE * applyFilter(RGB_IMAGE *img){
 }
 
 
-  /*
+  /**
   * Função que cria uma imagem em GRAYSCALE
   * @param height Numero de linhas da imagem.
   * @param width Numero de colunas da imagem.
@@ -261,7 +261,7 @@ GRAY_IMAGE * CreateImageGRAY(int height, int width){
   return tmp;
 }
 
-/*
+/**
 * Função que converte uma imagem RGB para uma em Grayscale.
 * @param img Imagem RGB que se quer converter.
 * @return tmp Imagem Grayscale que se quer obter.
@@ -276,7 +276,7 @@ GRAY_IMAGE * convertToGray(RGB_IMAGE * img){
 
 }
 
-/*
+/**
 * Função que converte uma imagem RGB para uma em grayscale de acordo
 * com o channel pretendido.
 * @param img RGB_IMAGE que se quer converter.
@@ -305,7 +305,7 @@ GRAY_IMAGE * convertToChannel(RGB_IMAGE * img, char * channel){
   return tmp;
 
 }
-/*
+/**
 * Função que carrega de um ficheiro que contém uma Imagem GRAYSCALE
 * para uma estrutura GRAY_IMAGE.
 * @param nome Nome do ficheiro da imagem pretendida.
@@ -336,7 +336,7 @@ GRAY_IMAGE * LoadFromFileGRAY(char *nome){
 
 }
 
-/*
+/**
 *Função que guarda uma Gray_Image num ficheiro.
 * @param img GRAY_IMAGE que se quer guardar.
 * @param nome Nome do ficheiro onde a imagem será guardada.
@@ -351,7 +351,7 @@ void saveOnFileGRAY(GRAY_IMAGE *img, char *nome){
   fwrite(img->data, img->h, img->w,fp);
 }
 
-/*
+/**
 *Função que acede a um pixel numa imagem Grayscale.
 * @param img Imagem em grayscale a que se pretende aceder.
 * @param pix_h Linha do pixel a que se pretende obter.
@@ -366,7 +366,7 @@ void AccessPixelGRAY(GRAY_IMAGE *img, int pix_h, int pix_w){
 }
 
 
-/* Função que altera a intensidade da componente grayscale
+/** Função que altera a intensidade da componente grayscale
 * de uma imagem, retornando uma nova imagem.
 * @param img GRAY_IMAGE que se pretende alterar.
 * @param intensity Valor a alterar na componente grayscale de cada pixel.
@@ -390,7 +390,7 @@ GRAY_IMAGE * change_intensityGRAY(GRAY_IMAGE *img, int intensity){
 
 }
 
-/*
+/**
  * Função que recorta uma imagem em Grayscale
  * e retorna esse mesmo recorte, que é também uma GRAY_IMAGE.
 
@@ -422,7 +422,7 @@ GRAY_IMAGE * access_regionGRAY(GRAY_IMAGE *img, int x, int y, int w, int h){
 }
 
 
-/*
+/**
  * Função que aplica um watermark, que é uma GRAY_IMAGE, a uma imagem de maiores dimensões,
  * também ela em Grayscale.
  *
@@ -451,7 +451,7 @@ GRAY_IMAGE * applyWatermarkGRAY(GRAY_IMAGE *original , GRAY_IMAGE *watermark,int
   return tmp;
 }
 
-/*
+/**
  * Função que aplica um filter a uma imagem em Grayscale.
 
  *@param img GRAY_IMAGE que irá receber o filtro.
@@ -497,7 +497,7 @@ GRAY_IMAGE * filterImageGRAY(GRAY_IMAGE *img){
 
 }
 
-/*
+/**
 * Função que cria uma imagem em binario
 * @param height Numero de linhas da imagem.
 * @param width Numero de colunas da imagem.
@@ -515,7 +515,7 @@ BIN_IMAGE * CreateImageBIN(int height, int width){
   return tmp;
 }
 
-/*
+/**
 * Função que carrega de um ficheiro que contém uma Imagem EM BINARIO
 * para uma estrutura BIN_IMAGE.
 * @param nome Nome do ficheiro da imagem pretendida.
@@ -545,7 +545,7 @@ BIN_IMAGE * LoadFromBinFile(char * nome){
 
 }
 
-/*
+/**
 * Função que carrega de um ficheiro que contém uma Imagem EM Grayscale
 * para uma estrutura BIN_IMAGE.
 * @param nome Nome do ficheiro da imagem pretendida.
@@ -582,7 +582,7 @@ BIN_IMAGE * LoadFromGrayFile(char *nome,int threshold){
 
 }
 
-/*
+/**
 *Função que guarda uma BIN_Image num ficheiro.
 * @param img BIN_IMAGE que se quer guardar.
 * @param nome Nome do ficheiro onde a imagem será guardada.
