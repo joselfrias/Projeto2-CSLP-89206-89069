@@ -4,20 +4,28 @@
 #include "formats_rgb.h"
 int main(){
   //Testing RGB FUNCTIONS
-  /*
+
   RGB_IMAGE *imagem;
-  RGB_IMAGE *newImage;
   imagem=LoadFromFileRGB("lena.ppm");
   saveOnFileRGB(imagem, "file.ppm");
-//  AccessPixelRGB(imagem, 501,499);
-  newImage=access_regionRGB(imagem,0,0,300,350);
+  RGB_IMAGE *girl;
+  girl=LoadFromFileRGB("girl.ppm");
+  AccessPixelRGB(imagem, 501,499);
+  RGB_IMAGE *newImage;
+  newImage=access_regionRGB(girl,0,0,300,300);
   saveOnFileRGB(newImage,"newfile.ppm");
-  */
-/*
-  newImage=change_intensityRGB(imagem, -100);
-  saveOnFileRGB(newImage,"intensity.ppm");
+  RGB_IMAGE *newImageV2;
+  newImageV2=change_intensityRGB(imagem, 100);
+  saveOnFileRGB(newImageV2,"intensity.ppm");
+  RGB_IMAGE *newImageV3;
+  newImageV3=applyWatermarkRGB(imagem, newImage,0,0,newImage->h+1, newImage->w+1);
+  saveOnFileRGB(newImageV3,"watermark_lena.ppm");
+  RGB_IMAGE *newRGBImage;
+  newRGBImage=applyFilter(imagem);
+  saveOnFileRGB(newRGBImage,"filtro.ppm");
 
-*/
+
+
   //Testing Binary Images
 /*
   BIN_IMAGE *imagem;
@@ -29,25 +37,30 @@ int main(){
 */
   //TODO define threshold
   //Testing Gray Image functions
+  /*
+  GRAY_IMAGE *imagem;
+  imagem=LoadFromFileGRAY("gray_lena.pgm");
+  saveOnFileGRAY(imagem,"file_gray.pgm");
   RGB_IMAGE *watermark=LoadFromFileRGB("girl.ppm");
   GRAY_IMAGE *gray_watermark;
   GRAY_IMAGE *gray_watermark_crop;
   gray_watermark=convertToGray(watermark);
-  gray_watermark_crop=access_regionGRAY(gray_watermark ,0,0,300,300);
   saveOnFileGRAY(gray_watermark,"gray_girl.pgm");
+  gray_watermark_crop=access_regionGRAY(gray_watermark ,0,0,400,400);
+
   saveOnFileGRAY(gray_watermark_crop,"girl_access.pgm");
-  GRAY_IMAGE *imagem;
-  imagem=LoadFromFileGRAY("gray_lena.pgm");
+
   GRAY_IMAGE *newImage;
+
+  newImage=applyWatermarkGRAY(imagem, gray_watermark_crop,0,0,401,401);
+  saveOnFileGRAY(newImage, "watermark_pgm");
   GRAY_IMAGE *newImageV2;
-  GRAY_IMAGE *newImageV3;
-  saveOnFileGRAY(imagem, "file_gray.pgm");
-  newImage=change_intensityGRAY(imagem, 100);
-  saveOnFileGRAY(newImage,"intens_gray.pgm");
-  newImageV2=access_regionGRAY(imagem ,0,0,400,400);
-  saveOnFileGRAY(newImageV2, "gray_lena_region.pgm");
-  newImageV3=applyWatermarkGRAY(imagem, gray_watermark_crop,0,0,301,301);
-  saveOnFileGRAY(newImageV3,"watermark_lena.pgm");
+  newImageV2=filterImageGRAY(gray_watermark);
+  saveOnFileGRAY(newImageV2,"filtro.pgm");
+  */
+
+
+
 
 
 

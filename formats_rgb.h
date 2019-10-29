@@ -97,7 +97,7 @@ RGB_IMAGE * change_intensityRGB(RGB_IMAGE *, int intensity);
 * @return RGB_IMAGE Nova Imagem RGB com watermark aplicada.
 */
 
-RGB_IMAGE * applyFilter(RGB_IMAGE *, int * kernel);
-RGB_IMAGE * applyWatermarkRGB(RGB_IMAGE *, RGB_IMAGE *);
+RGB_IMAGE * applyFilter(RGB_IMAGE *);
+RGB_IMAGE * applyWatermarkRGB(RGB_IMAGE *, RGB_IMAGE *, int pix_h_start, int pix_w_start, int pix_h_end, int pix_w_end);
 
 #endif //_FORMATS_RGB_H
